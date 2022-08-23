@@ -1,27 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   height: 100vh;
   overflow: hidden;
+  margin: 0;
+}
+
+#container {
+  height: 100%;
+  display: flex;
 }
 
 .header {
   display: flex;
   justify-content: center;
   font-size: 3rem;
-  background-color: #224b0c;
-  width: 100%;
+  background-color: #589636;
 }
 
 .sidebar {
-  height: 100%;
-  font-size: 2rem;
-  margin: 8px;
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: #c1d5a4;
+  background-color: rgb(171, 235, 88);
+  padding: 8px;
 }
 
 .projects {
   margin-top: 16px;
   font-size: 2.2rem;
+}
+
+#content {
+  width: 100%;
+  background-color: #c0eb80;
 }
