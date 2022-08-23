@@ -1,12 +1,13 @@
-console.log("hi there");
+//layout: Home tab will show all tasks sorted by priority and date,
+//with their project name next to it. Home will also be like a project
+//that can have tasks added to it.
 
-//the plan...
-//make a default template similar to the tabs in
-//the resturant project. It will include the top bar and the
-//side bar. Maybe it will be coded into html as it mainly doesnt change,
-//things just get added to it like projects but that part can be js.
+//  1: Make an add task form module w/button first
+//  2: Make module for
+import addTaskForm from "./add-task-page";
 
-//Step 1: Make top and side nav with HTMl, ask in TOP disc if good idea
-//Step 2: Make a module for each new page or screen:
-//  - Inbox, Today, This Week, Important, Projects
-//maybe use library book form reworked for making todolists
+addTaskBtn();
+function addTaskBtn() {
+  const addTaskBtn = document.querySelector(".add-task-btn");
+  addTaskBtn.addEventListener("click", addTaskForm);
+}
