@@ -3,8 +3,8 @@
 //that can have tasks added to it.
 
 //  1: Make an add task form module w/button first
-//  2: Make module for
-import addTaskForm from "./add-task-page";
+//  2: Make module for creating todo Objects
+import addTaskForm from "./add-task-form";
 
 addTaskBtn();
 function addTaskBtn() {
