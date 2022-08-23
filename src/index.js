@@ -4,10 +4,22 @@
 
 //  1: Make an add task form module w/button first
 //  2: Make module for creating todo Objects
-import addTaskForm from "./add-task-form";
+//      -How to approach this...
+//         need to get form input from form module to object module.
+//         cant send it directly because OOP principles i think
+//          return it to index.js and index.js sends it.
+import { addTaskForm, submitFormButton } from "./add-task-form";
 
+import "./style.css";
+
+//when a new form is made the submit button is formatted
+//when the submit button is clicked then getTaskInputs collects inputs
+//send to a information holder module
 addTaskBtn();
 function addTaskBtn() {
   const addTaskBtn = document.querySelector(".add-task-btn");
-  addTaskBtn.addEventListener("click", addTaskForm);
+  addTaskBtn.addEventListener("click", () => {
+    addTaskForm();
+    submitFormButton();
+  });
 }
