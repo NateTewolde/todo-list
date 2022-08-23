@@ -1,4 +1,9 @@
-function addTaskForm() {
+function addTaskForm(inputs) {
+  createTaskForm();
+  submitFormButton();
+}
+
+function createTaskForm() {
   const content = document.querySelector("#content");
 
   const formSection = document.createElement("div");
@@ -8,10 +13,10 @@ function addTaskForm() {
   formHeader.classList.add("form-header");
   formHeader.textContent = "New Task";
 
-  const addTaskForm = document.createElement("form");
-  addTaskForm.setAttribute("action", "");
-  addTaskForm.setAttribute("method", "post");
-  addTaskForm.setAttribute("id", "new_book_form");
+  const createTaskForm = document.createElement("form");
+  createTaskForm.setAttribute("action", "");
+  createTaskForm.setAttribute("method", "post");
+  createTaskForm.setAttribute("id", "new_book_form");
 
   const titleField = document.createElement("div");
   titleField.classList.add("form-field");
@@ -25,7 +30,7 @@ function addTaskForm() {
   titleInput.setAttribute("placeholder", "Title");
   titleField.appendChild(titleLabel);
   titleField.appendChild(titleInput);
-  addTaskForm.appendChild(titleField);
+  createTaskForm.appendChild(titleField);
 
   const descriptionField = document.createElement("div");
   descriptionField.classList.add("form-field");
@@ -39,7 +44,7 @@ function addTaskForm() {
   descriptionInput.setAttribute("placeholder", "Description");
   descriptionField.appendChild(descriptionLabel);
   descriptionField.appendChild(descriptionInput);
-  addTaskForm.appendChild(descriptionField);
+  createTaskForm.appendChild(descriptionField);
 
   const dueDateField = document.createElement("div");
   dueDateField.classList.add("form-field");
@@ -53,7 +58,7 @@ function addTaskForm() {
   //dueDateInput.setAttribute("placeholder", "08/22/2022");
   dueDateField.appendChild(dueDateLabel);
   dueDateField.appendChild(dueDateInput);
-  addTaskForm.appendChild(dueDateField);
+  createTaskForm.appendChild(dueDateField);
 
   const priorityField = document.createElement("div");
   priorityField.classList.add("form-field");
@@ -83,20 +88,19 @@ function addTaskForm() {
 
   priorityField.appendChild(priorityLabel);
   priorityField.appendChild(prioritySelect);
-  addTaskForm.appendChild(priorityField);
+  createTaskForm.appendChild(priorityField);
 
   const submitBtn = document.createElement("button");
   submitBtn.classList.add("submit-form-btn");
   submitBtn.setAttribute("type", "button");
   submitBtn.textContent = "Submit";
-  addTaskForm.appendChild(submitBtn);
+  createTaskForm.appendChild(submitBtn);
 
   formSection.appendChild(formHeader);
-  formSection.appendChild(addTaskForm);
+  formSection.appendChild(createTaskForm);
   content.appendChild(formSection);
-
-  submitFormButton();
 }
+
 function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
   submitFormBtn.addEventListener("click", getTaskInput);
@@ -109,5 +113,7 @@ function getTaskInput() {
   const prioritySelected = document.getElementById("priority");
   const priorityInput =
     prioritySelected.options[prioritySelected.selectedIndex].text;
+  //return { titleInput, descriptionInput, dateInput, priorityInput };
+  return titleInput;
 }
-export default addTaskForm;
+export { addTaskForm, submitFormButton };
