@@ -1,3 +1,4 @@
+import { refreshTasks } from "./display-tasks";
 import { setTask, getTasks } from "./information-holder";
 
 function addTaskForm(inputs) {
@@ -105,7 +106,10 @@ function createTaskForm() {
 
 function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
-  submitFormBtn.addEventListener("click", getTaskInput);
+  submitFormBtn.addEventListener("click", () => {
+    getTaskInput();
+    refreshTasks();
+  });
 }
 
 function getTaskInput() {
