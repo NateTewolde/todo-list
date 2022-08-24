@@ -8,3 +8,6 @@ import { getTasks } from "./information-holder";
 import "./style.css";
 
 refreshTasks();
+//display tasks in home in seperated by priority
+//then display tasks in home sorted by date
+//then format Today and This week tab's
