@@ -1,3 +1,5 @@
+import { setTask, getTasks } from "./information-holder";
+
 function addTaskForm(inputs) {
   createTaskForm();
   submitFormButton();
@@ -113,7 +115,7 @@ function getTaskInput() {
   const prioritySelected = document.getElementById("priority");
   const priorityInput =
     prioritySelected.options[prioritySelected.selectedIndex].text;
-  //return { titleInput, descriptionInput, dateInput, priorityInput };
-  return titleInput;
+
+  setTask(titleInput, descriptionInput, dateInput, priorityInput);
 }
-export { addTaskForm, submitFormButton };
+export default addTaskForm;
