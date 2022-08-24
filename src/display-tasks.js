@@ -1,13 +1,26 @@
 import { getTasks } from "./information-holder";
 import addTaskForm from "./add-task-form";
 
+//can visibly seperate priorities using CSS,
+//use colors shades for those sections
+//like red for 1, orange: 2, yellow: 3
+// and white or something for none
+
+//displays tasks seperated by priority level from 1-none
 function displayTasks() {
   const content = document.querySelector("#content");
-
   let tasks = getTasks();
   const row = [];
   let tasksContainer = document.createElement("div");
   tasksContainer.setAttribute("id", "tasks-container");
+  let priority1Container = document.createElement("div");
+  priority1Container.setAttribute("class", "priority1-container");
+  let priority2Container = document.createElement("div");
+  priority2Container.setAttribute("class", "priority2-container");
+  let priority3Container = document.createElement("div");
+  priority3Container.setAttribute("class", "priority3-container");
+  let priority4Container = document.createElement("div");
+  priority4Container.setAttribute("class", "priority4-container");
   for (let i = 0; i < tasks.length; i++) {
     row[i] = document.createElement("div");
     row[i].classList.add("task-row");
@@ -17,8 +30,24 @@ function displayTasks() {
     let priority = tasks[i].getPriority();
     row[i].textContent =
       title + ", " + description + ", " + dueDate + ", " + priority;
-    tasksContainer.appendChild(row[i]);
+    let taskPriority = tasks[i].getPriority();
+    if (taskPriority === "1") {
+      priority1Container.appendChild(row[i]);
+    }
+    if (taskPriority === "2") {
+      priority2Container.appendChild(row[i]);
+    }
+    if (taskPriority === "3") {
+      priority3Container.appendChild(row[i]);
+    }
+    if (taskPriority === "") {
+      priority4Container.appendChild(row[i]);
+    }
   }
+  tasksContainer.appendChild(priority1Container);
+  tasksContainer.appendChild(priority2Container);
+  tasksContainer.appendChild(priority3Container);
+  tasksContainer.appendChild(priority4Container);
   content.appendChild(tasksContainer);
 }
 
@@ -47,5 +76,10 @@ function removeAllChildNodes(parent) {
     parent.removeChild(parent.firstChild);
   }
 }
+
+//display tasks seperated subtley in the display
+// by priority with the default being 4 as the lowest.
+// 1 array per priority, each array gets sent to displayTasks
+//as not much change will need to happen with it that way.
 
 export { displayTasks, refreshTasks };
