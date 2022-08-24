@@ -72,7 +72,6 @@ function createTaskForm() {
   prioritySelect.setAttribute("id", "priority");
   const priorityOption1 = document.createElement("option");
   priorityOption1.setAttribute("value", "1");
-  priorityOption1.setAttribute("selected", "");
   priorityOption1.textContent = "1";
   const priorityOption2 = document.createElement("option");
   priorityOption2.setAttribute("value", "2");
@@ -80,14 +79,15 @@ function createTaskForm() {
   const priorityOption3 = document.createElement("option");
   priorityOption3.setAttribute("value", "3");
   priorityOption3.textContent = "3";
-  const priorityOption4 = document.createElement("option");
-  priorityOption4.setAttribute("value", "4");
-  priorityOption4.textContent = "4";
+  const priorityOptionNone = document.createElement("option");
+  priorityOptionNone.setAttribute("value", "None");
+  priorityOptionNone.setAttribute("selected", "");
+  priorityOptionNone.textContent = "";
 
   prioritySelect.appendChild(priorityOption1);
   prioritySelect.appendChild(priorityOption2);
   prioritySelect.appendChild(priorityOption3);
-  prioritySelect.appendChild(priorityOption4);
+  prioritySelect.appendChild(priorityOptionNone);
 
   priorityField.appendChild(priorityLabel);
   priorityField.appendChild(prioritySelect);
