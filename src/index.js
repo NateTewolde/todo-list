@@ -3,19 +3,8 @@
 //that can have tasks added to it.
 
 import addTaskForm from "./add-task-form";
-import { displayTasks } from "./display-tasks";
+import { refreshTasks } from "./display-tasks";
 import { getTasks } from "./information-holder";
-
 import "./style.css";
 
-addTaskBtn();
-function addTaskBtn() {
-  const addTaskBtn = document.querySelector(".add-task-btn");
-  addTaskBtn.addEventListener("click", addTaskForm);
-}
-
-testBtn();
-function testBtn() {
-  const testBtn = document.querySelector(".test-btn");
-  testBtn.addEventListener("click", displayTasks);
-}
+refreshTasks();
