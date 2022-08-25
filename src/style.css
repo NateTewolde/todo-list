@@ -38,3 +38,19 @@ body {
   width: 100%;
   background-color: #c0eb80;
 }
+
+.priority1-container {
+  background-color: rgb(216, 96, 96);
+}
+
+.priority2-container {
+  background-color: rgb(217, 171, 87);
+}
+
+.priority3-container {
+  background-color: rgb(226, 226, 81);
+}
+
+.priority4-container {
+  background-color: white;
+}
