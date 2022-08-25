@@ -82,6 +82,13 @@ function removeAddTaskButton() {
   addTaskBtn.remove();
 }
 
+function addEditButton() {
+  const editBtn = document.createElement("div");
+  editBtn.classList.add("edit-button");
+  editBtn.textContent.add("Edit");
+  return editBtn;
+}
+
 //helper function to clear a element
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
