@@ -10,8 +10,15 @@ import "./style.css";
 //refreshTasks();
 
 //DONE display tasks in home in seperated by priority
-//then display tasks in home sorted by date
-//then format Today and This week tab's
+//      - maybe change it so that its similar to getSortedByDate()
+//      - to use OOP principles better
+//DONE then display tasks in home sorted by date
+//DONE update addTask button to disappear if an add task form is already on screen
+//then format Today and This week tab's, using resturatn page as example.
+//just format it to be clicked on.
+//then Format Today Page to display all tasks due the current day
+//then format This Week Page to display all tasks due for 7 days or the rest of the week
+//
 
 //example tasks for testing
 setTask("Task2", "Description2", "2022-08-27", "2");
@@ -22,6 +29,8 @@ setTask("Task4Date1", "Description4", "2020-08-24", "");
 setTask("Task4Date4", "Description4", "2025-01-01", "");
 setTask("Task4Date3", "Description4", "2023-05-01", "");
 
+setTask("Task3", "Description3", "2022-08-26", "3");
 setTask("Task3", "Description3", "2022-08-24", "3");
+setTask("Task3", "Description3", "2022-08-25", "3");
 
 refreshTasks();
