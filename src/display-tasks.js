@@ -1,4 +1,4 @@
-import { getTasks } from "./information-holder";
+import { getTasks, getSortedByDate } from "./information-holder";
 import addTaskForm from "./add-task-form";
 
 //can visibly seperate priorities using CSS,
@@ -9,7 +9,7 @@ import addTaskForm from "./add-task-form";
 //displays tasks seperated by priority level from 1-none
 function displayTasks() {
   const content = document.querySelector("#content");
-  let tasks = getTasks();
+  let tasks = getSortedByDate();
   const row = [];
   let tasksContainer = document.createElement("div");
   tasksContainer.setAttribute("id", "tasks-container");
@@ -56,7 +56,6 @@ function refreshTasks() {
   displayAddTasksBtn();
   formatAddTaskBtn();
   displayTasks();
-  sortedByDate();
 }
 
 function displayAddTasksBtn() {
@@ -75,21 +74,6 @@ function formatAddTaskBtn() {
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
-  }
-}
-
-//sort tasks[] by dueDate.
-//sort by year first
-//called from refreshTasks() rn
-function sortedByDate() {
-  const unsortedTasks = getTasks();
-  const sortedByYear = unsortedTasks.sort(
-    (a, b) => b.getDueDate().slice(0, 4) - a.getDueDate().slice(0, 4)
-  );
-  for (let i = 0; i < unsortedTasks.length; i++) {
-    console.log(
-      sortedByYear[i].getTitle() + ", " + sortedByYear[i].getDueDate()
-    );
   }
 }
 
