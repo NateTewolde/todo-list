@@ -85,4 +85,4 @@ function removeAllChildNodes(parent) {
   }
 }
 
-export { displayTasks, refreshTasks };
+export { displayTasks, refreshTasks, removeAllChildNodes };
