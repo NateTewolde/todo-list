@@ -1,5 +1,6 @@
 import { getSortedByDate } from "./information-holder";
 import { isToday } from "date-fns";
+import { displayTasks } from "./display-tasks";
 
 function createTodayPage() {
   const content = document.querySelector("#content");
@@ -12,16 +13,16 @@ function createTodayPage() {
     day: "numeric",
   });
 
-  getTodaysTasks(todaysDateObj);
-
   const todaysDate = document.createElement("div");
   todaysDate.classList.add("todays-date");
   todaysDate.textContent = todaysDateObj;
-
   content.appendChild(todaysDate);
+
+  const todaysTasks = getTodaysTasks();
+  displayTasks(todaysTasks);
 }
 
-function getTodaysTasks(todaysDateObj) {
+function getTodaysTasks() {
   const tasks = getSortedByDate();
   const todaysTasksArray = [];
 
@@ -30,10 +31,7 @@ function getTodaysTasks(todaysDateObj) {
       todaysTasksArray.push(tasks[i]);
     }
   }
-  for (let j = 0; j < todaysTasksArray.length; j++) {
-    console.log(todaysTasksArray[j].getDueDate());
-    console.log(todaysTasksArray[j].getTitle());
-  }
+  return todaysTasksArray;
 }
 
 export default createTodayPage;
