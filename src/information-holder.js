@@ -5,7 +5,8 @@ const tasks = [];
 
 //uses Task to make objects and pushes them to tasks.
 function setTask(title, description, dueDate, priority) {
-  let dueDateObj = new Date(dueDate).toLocaleDateString("en-us", {
+  let dueDateFormatted = dueDate.replace(/-/g, "/");
+  let dueDateObj = new Date(dueDateFormatted).toLocaleDateString("en-us", {
     weekday: "short",
     year: "numeric",
     month: "short",
