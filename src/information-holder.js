@@ -5,7 +5,13 @@ const tasks = [];
 
 //uses Task to make objects and pushes them to tasks.
 function setTask(title, description, dueDate, priority) {
-  tasks.push(Task(title, description, dueDate, priority));
+  let dueDateObj = new Date(dueDate).toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  tasks.push(Task(title, description, dueDateObj, priority));
 }
 
 //Creates Task objects
