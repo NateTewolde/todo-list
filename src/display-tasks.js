@@ -56,6 +56,7 @@ function refreshTasks() {
   displayAddTasksBtn();
   formatAddTaskBtn();
   displayTasks();
+  sortedByDate();
 }
 
 function displayAddTasksBtn() {
@@ -77,9 +78,19 @@ function removeAllChildNodes(parent) {
   }
 }
 
-//display tasks seperated subtley in the display
-// by priority with the default being 4 as the lowest.
-// 1 array per priority, each array gets sent to displayTasks
-//as not much change will need to happen with it that way.
+//sort tasks[] by dueDate.
+//sort by year first
+//called from refreshTasks() rn
+function sortedByDate() {
+  const unsortedTasks = getTasks();
+  const sortedByYear = unsortedTasks.sort(
+    (a, b) => b.getDueDate().slice(0, 4) - a.getDueDate().slice(0, 4)
+  );
+  for (let i = 0; i < unsortedTasks.length; i++) {
+    console.log(
+      sortedByYear[i].getTitle() + ", " + sortedByYear[i].getDueDate()
+    );
+  }
+}
 
 export { displayTasks, refreshTasks };
