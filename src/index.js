@@ -3,24 +3,15 @@
 //that can have tasks added to it.
 
 import addTaskForm from "./add-task-form";
-import { refreshTasks } from "./display-tasks";
+import { refreshTasks, removeAllChildNodes } from "./display-tasks";
 import { getTasks, setTask } from "./information-holder";
+import createHomepage from "./home-page";
+import createTodayPage from "./today-page";
 import "./style.css";
 
-//refreshTasks();
+//npm install date-fns --save for homepc
 
-//DONE display tasks in home in seperated by priority
-//      - maybe change it so that its similar to getSortedByDate()
-//      - to use OOP principles better
-//DONE then display tasks in home sorted by date
-//DONE update addTask button to disappear if an add task form is already on screen
-//then format Today and This week tab's, using resturatn page as example.
-//just format it to be clicked on.
-//then Format Today Page to display all tasks due the current day
-//then format This Week Page to display all tasks due for 7 days or the rest of the week
-//
-
-//example tasks for testing
+//temporary example tasks for testing
 setTask("Task2", "Description2", "2022-08-27", "2");
 setTask("Task1", "Description1", "2022-08-21", "1");
 
@@ -32,5 +23,47 @@ setTask("Task4Date3", "Description4", "2023-05-01", "");
 setTask("Task3", "Description3", "2022-08-26", "3");
 setTask("Task3", "Description3", "2022-08-24", "3");
 setTask("Task3", "Description3", "2022-08-25", "3");
+createHomepage();
+formatTabs();
 
-refreshTasks();
+function formatTabs() {
+  const tabs = document.querySelectorAll("[data-tab-id]");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      let tabIndex = tab.getAttribute("data-tab-id");
+      refreshPage();
+
+      if (tabIndex === "0") {
+        createHomepage();
+      }
+      if (tabIndex === "1") {
+        createTodayPage();
+      }
+      if (tabIndex === "2") {
+        createThisWeekPage();
+      }
+      if (tabIndex === "3") {
+        createProjectsPage();
+      }
+    });
+  });
+}
+
+function refreshPage() {
+  const content = document.querySelector("#content");
+  removeAllChildNodes(content);
+}
+
+//DONE display tasks in home in seperated by priority
+//      - maybe change it so that its similar to getSortedByDate()
+//      - to use OOP principles better
+//DONE then display tasks in home sorted by date
+//DONE update addTask button to disappear if an add task form is already on screen
+//then format Today and This week tab's, using resturatn page as example.
+
+//just format it to be clicked on.
+//then Format Today Page to display all tasks due the current day
+//then format This Week Page to display all tasks due for 7 days or the rest of the week
+//
+
+//example tasks for testing
