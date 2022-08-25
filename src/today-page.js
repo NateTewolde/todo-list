@@ -1,5 +1,5 @@
 import { getSortedByDate } from "./information-holder";
-import { isEqual } from "date-fns";
+import { isToday } from "date-fns";
 
 function createTodayPage() {
   const content = document.querySelector("#content");
@@ -23,9 +23,16 @@ function createTodayPage() {
 
 function getTodaysTasks(todaysDateObj) {
   const tasks = getSortedByDate();
+  const todaysTasksArray = [];
 
   for (let i = 0; i < tasks.length; i++) {
-    console.log(isEqual(tasks[i], todaysDateObj));
+    if (isToday(new Date(tasks[i].getDueDate()))) {
+      todaysTasksArray.push(tasks[i]);
+    }
+  }
+  for (let j = 0; j < todaysTasksArray.length; j++) {
+    console.log(todaysTasksArray[j].getDueDate());
+    console.log(todaysTasksArray[j].getTitle());
   }
 }
 
