@@ -7,9 +7,15 @@ import addTaskForm from "./add-task-form";
 // and white or something for none
 
 //displays tasks seperated by priority level from 1-none
-function displayTasks() {
+function displayTasks(tasks) {
   const content = document.querySelector("#content");
-  let tasks = getSortedByDate();
+  console.log(tasks);
+  console.log(typeof tasks);
+
+  if (tasks === undefined) {
+    tasks = getSortedByDate();
+  }
+
   const row = [];
   let tasksContainer = document.createElement("div");
   tasksContainer.setAttribute("id", "tasks-container");
