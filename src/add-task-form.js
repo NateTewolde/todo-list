@@ -7,6 +7,10 @@ function addTaskForm(inputs) {
 }
 
 function createTaskForm() {
+  if (checkForForm() === true) {
+    return -1;
+  }
+
   const content = document.querySelector("#content");
 
   const formSection = document.createElement("div");
@@ -121,5 +125,14 @@ function getTaskInput() {
     prioritySelected.options[prioritySelected.selectedIndex].text;
 
   setTask(titleInput, descriptionInput, dateInput, priorityInput);
+}
+
+//checks if an add task form is present on the page
+function checkForForm() {
+  const formCheck = document.getElementById("form-section");
+  if (!formCheck) {
+    return false;
+  }
+  return true;
 }
 export default addTaskForm;
