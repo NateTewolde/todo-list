@@ -5,7 +5,6 @@ import { displayTasks } from "./display-tasks";
 function createTodayPage() {
   const content = document.querySelector("#content");
 
-  const tasks = getSortedByDate();
   const todaysDateObj = new Date().toLocaleDateString("en-us", {
     weekday: "short",
     year: "numeric",
