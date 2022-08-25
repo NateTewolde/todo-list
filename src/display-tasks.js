@@ -53,9 +53,9 @@ function displayTasks() {
 
 function refreshTasks() {
   removeAllChildNodes(content);
+  displayTasks();
   displayAddTasksBtn();
   formatAddTaskBtn();
-  displayTasks();
 }
 
 function displayAddTasksBtn() {
@@ -70,7 +70,7 @@ function formatAddTaskBtn() {
   addTaskBtn.addEventListener("click", addTaskForm);
 }
 
-//helper function
+//helper function to clear a element
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
