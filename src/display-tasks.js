@@ -9,8 +9,6 @@ import addTaskForm from "./add-task-form";
 //displays tasks seperated by priority level from 1-none
 function displayTasks(tasks) {
   const content = document.querySelector("#content");
-  console.log(tasks);
-  console.log(typeof tasks);
 
   if (tasks === undefined) {
     tasks = getSortedByDate();
