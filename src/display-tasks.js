@@ -67,7 +67,15 @@ function displayAddTasksBtn() {
 
 function formatAddTaskBtn() {
   const addTaskBtn = document.querySelector(".add-task-btn");
-  addTaskBtn.addEventListener("click", addTaskForm);
+  addTaskBtn.addEventListener("click", () => {
+    addTaskForm();
+    removeAddTaskButton();
+  });
+}
+
+function removeAddTaskButton() {
+  const addTaskBtn = document.querySelector(".add-task-btn");
+  addTaskBtn.remove();
 }
 
 //helper function to clear a element
