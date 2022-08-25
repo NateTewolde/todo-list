@@ -21,4 +21,14 @@ function getTasks() {
   return tasks;
 }
 
-export { setTask, getTasks };
+function getSortedByDate() {
+  const unsortedTasks = getTasks();
+
+  const sortedByDate = unsortedTasks.sort(
+    (a, b) => new Date(a.getDueDate()) - new Date(b.getDueDate())
+  );
+
+  return sortedByDate;
+}
+
+export { setTask, getTasks, getSortedByDate };
