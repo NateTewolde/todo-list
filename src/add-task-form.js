@@ -1,7 +1,7 @@
 import { refreshTasks } from "./display-tasks";
 import { setTask, getTasks } from "./information-holder";
 
-function addTaskForm(inputs) {
+function addTaskForm() {
   createTaskForm();
   submitFormButton();
 }
