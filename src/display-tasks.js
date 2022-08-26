@@ -28,7 +28,7 @@ function displayTasks(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     row[i] = document.createElement("div");
     row[i].classList.add("task-row");
-    row[i].setAttribute("data-task-id", i);
+    row[i].setAttribute("data-task-id", tasks[i].getId());
     let taskItems = document.createElement("div");
     taskItems.classList.add("task-items");
     let revisionItems = document.createElement("div");
