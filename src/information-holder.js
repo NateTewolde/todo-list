@@ -11,6 +11,9 @@ function setTask(title, description, dueDate, priority) {
     month: "short",
     day: "numeric",
   });
+  if (dueDateObj === "Invalid Date") {
+    dueDateObj = "";
+  }
   tasks.push(Task(title, description, dueDateObj, priority));
 }
 
@@ -20,7 +23,10 @@ const Task = (title, description, dueDate, priority) => {
   const getDescription = () => description;
   const getDueDate = () => dueDate;
   const getPriority = () => priority;
-  const taskId = title + getRandomIntInclusive();
+  const taskId = ("Task" + title + getRandomIntInclusive()).replace(
+    /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g,
+    ""
+  );
   const getId = () => taskId;
   return { getTitle, getDescription, getDueDate, getPriority, getId };
 };
