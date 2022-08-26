@@ -45,10 +45,15 @@ function getSortedByDate() {
 }
 
 function deleteTask(theTasksId) {
+  let taskIndex = findTaskIndex(theTasksId);
+  tasks.splice(taskIndex, 1);
+}
+
+function findTaskIndex(theTasksId) {
   let taskIndex = tasks.findIndex((index) =>
     checkForMatchingIds(index, theTasksId)
   );
-  tasks.splice(taskIndex, 1);
+  return taskIndex;
 }
 
 function checkForMatchingIds(task, theTasksId) {
@@ -64,4 +69,4 @@ function getRandomIntInclusive() {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-export { setTask, getTasks, getSortedByDate, deleteTask };
+export { setTask, getTasks, getSortedByDate, deleteTask, findTaskIndex };
