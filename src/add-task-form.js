@@ -84,7 +84,7 @@ function createTaskForm() {
   priorityOption3.setAttribute("value", "3");
   priorityOption3.textContent = "3";
   const priorityOptionNone = document.createElement("option");
-  priorityOptionNone.setAttribute("value", "None");
+  priorityOptionNone.setAttribute("value", "");
   priorityOptionNone.setAttribute("selected", "");
   priorityOptionNone.textContent = "";
 
