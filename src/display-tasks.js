@@ -148,9 +148,7 @@ function formatDeleteBtn() {
 }
 
 function setDeleteTask(task) {
-  console.log("task from setDeleteTask: " + task.classList);
   let taskId = task.getAttribute("data-task-id");
-  console.log("taskId from set: " + taskId);
   deleteTask(taskId);
 }
 
