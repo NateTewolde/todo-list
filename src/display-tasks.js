@@ -28,12 +28,32 @@ function displayTasks(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     row[i] = document.createElement("div");
     row[i].classList.add("task-row");
-    let title = tasks[i].getTitle();
-    let description = tasks[i].getDescription();
-    let dueDate = tasks[i].getDueDate();
-    let priority = tasks[i].getPriority();
-    row[i].textContent =
-      title + ", " + description + ", " + dueDate + ", " + priority;
+    let taskItems = document.createElement("div");
+    taskItems.classList.add("task-items");
+    let editBtn = addEditButton();
+
+    let title = document.createElement("div");
+    title.classList.add("task-title");
+    title.textContent = tasks[i].getTitle();
+
+    let description = document.createElement("div");
+    description.classList.add("task-description");
+    description.textContent = tasks[i].getDescription();
+
+    let dueDate = document.createElement("div");
+    dueDate.classList.add("task-due-date");
+    dueDate.textContent = tasks[i].getDueDate();
+
+    let priority = document.createElement("div");
+    priority.classList.add("task-priority");
+    priority.textContent = tasks[i].getPriority();
+
+    taskItems.appendChild(title);
+    taskItems.appendChild(description);
+    taskItems.appendChild(dueDate);
+    taskItems.appendChild(priority);
+    row[i].appendChild(taskItems);
+    row[i].appendChild(editBtn);
     let taskPriority = tasks[i].getPriority();
     if (taskPriority === "1") {
       priority1Container.appendChild(row[i]);
@@ -60,6 +80,7 @@ function refreshTasks() {
   displayTasks();
   displayAddTasksBtn();
   formatAddTaskBtn();
+  //formatEditBtn();
 }
 
 function displayAddTasksBtn() {
@@ -85,7 +106,7 @@ function removeAddTaskButton() {
 function addEditButton() {
   const editBtn = document.createElement("div");
   editBtn.classList.add("edit-button");
-  editBtn.textContent.add("Edit");
+  editBtn.textContent = "Edit";
   return editBtn;
 }
 
