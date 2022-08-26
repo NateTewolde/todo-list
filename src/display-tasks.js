@@ -1,4 +1,4 @@
-import { getTasks, getSortedByDate } from "./information-holder";
+import { getTasks, getSortedByDate, deleteTask } from "./information-holder";
 import addTaskForm from "./add-task-form";
 
 //can visibly seperate priorities using CSS,
@@ -90,6 +90,7 @@ function refreshTasks() {
   displayAddTasksBtn();
   formatAddTaskBtn();
   //formatEditBtn();
+  formatDeleteBtn();
 }
 
 function displayAddTasksBtn() {
@@ -120,7 +121,7 @@ function addEditButton() {
 }
 
 function formatEditBtn() {
-  const editBtn = document.querySelector(".edit-button");
+  const editBtn = document.querySelectorAll(".edit-button");
   editBtn.addEventListener("click", () => {
     //form pops up populated already with the users input
     //that the user can change. If user submits then it deletes
@@ -137,13 +138,20 @@ function addDeleteButton() {
 }
 
 function formatDeleteBtn() {
-  const deleteBtn = document.querySelector(".delete-button");
-  deleteBtn.addEventListener("click", () => {});
-  //gets the data-task-id attribute.
-  //this is the index of the task in getSortedByDate, not tasks so this
-  //makes it a little harder. or i could add a task# to each task object
+  const deleteTaskBtns = document.querySelectorAll(".delete-button");
+  deleteTaskBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", () => {
+      setDeleteTask(deleteBtn.parentNode.parentNode);
+      refreshTasks();
+    });
+  });
+}
 
-  //steps:
+function setDeleteTask(task) {
+  console.log("task from setDeleteTask: " + task.classList);
+  let taskId = task.getAttribute("data-task-id");
+  console.log("taskId from set: " + taskId);
+  deleteTask(taskId);
 }
 
 //helper function to clear a element
