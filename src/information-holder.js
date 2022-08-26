@@ -39,6 +39,18 @@ function getSortedByDate() {
   return sortedByDate;
 }
 
+function deleteTask(theTasksId) {
+  console.log("taskID: " + theTasksId);
+  let taskIndex = tasks.findIndex((index) =>
+    checkForMatchingIds(index, theTasksId)
+  );
+  console.log(taskIndex);
+}
+
+function checkForMatchingIds(index, theTasksId) {
+  return tasks[index] == theTasksId;
+}
+
 //Helper function that returns a random number between and including a mix/max
 function getRandomIntInclusive() {
   let setMin = 0;
@@ -48,4 +60,4 @@ function getRandomIntInclusive() {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-export { setTask, getTasks, getSortedByDate };
+export { setTask, getTasks, getSortedByDate, deleteTask };
