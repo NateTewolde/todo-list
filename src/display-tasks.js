@@ -133,11 +133,9 @@ function formatEditBtn() {
   const editTaskBtns = document.querySelectorAll(".edit-button");
   editTaskBtns.forEach((editBtn) => {
     editBtn.addEventListener("click", () => {
+      editBtn.parentNode.parentNode.classList.add("editing-task");
       addTaskForm();
       removeAddTaskButton();
-      //get the task values from taskId and input their entries into
-      //the form. tnhen they can submit it and have the original be deleted
-      //and stuff refreshed.
       editTask(editBtn.parentNode.parentNode);
     });
   });
