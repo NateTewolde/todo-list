@@ -1,5 +1,11 @@
-import { getTasks, getSortedByDate, deleteTask } from "./information-holder";
+import {
+  getTasks,
+  getSortedByDate,
+  deleteTask,
+  findTaskIndex,
+} from "./information-holder";
 import addTaskForm from "./add-task-form";
+import { formatISO } from "date-fns";
 
 //can visibly seperate priorities using CSS,
 //use colors shades for those sections
@@ -82,7 +88,7 @@ function displayTasks(tasks) {
   tasksContainer.appendChild(priority3Container);
   tasksContainer.appendChild(priority4Container);
   content.appendChild(tasksContainer);
-  //formatEditBtn();
+  formatEditBtn();
   formatDeleteBtn();
 }
 
@@ -110,6 +116,9 @@ function formatAddTaskBtn() {
 
 function removeAddTaskButton() {
   const addTaskBtn = document.querySelector(".add-task-btn");
+  if (addTaskBtn === null) {
+    return;
+  }
   addTaskBtn.remove();
 }
 
@@ -121,13 +130,32 @@ function addEditButton() {
 }
 
 function formatEditBtn() {
-  const editBtn = document.querySelectorAll(".edit-button");
-  editBtn.addEventListener("click", () => {
-    //form pops up populated already with the users input
-    //that the user can change. If user submits then it deletes
-    //the task and a new task is made. Easy
-    //delete button can be seperate from edit button. Edit Delete
+  const editTaskBtns = document.querySelectorAll(".edit-button");
+  editTaskBtns.forEach((editBtn) => {
+    editBtn.addEventListener("click", () => {
+      addTaskForm();
+      removeAddTaskButton();
+      //get the task values from taskId and input their entries into
+      //the form. tnhen they can submit it and have the original be deleted
+      //and stuff refreshed.
+      editTask(editBtn.parentNode.parentNode);
+    });
   });
+}
+
+function editTask(taskElement) {
+  let taskId = taskElement.getAttribute("data-task-id");
+  let taskIndex = findTaskIndex(taskId);
+  let tasks = getTasks();
+  let task = tasks[taskIndex];
+
+  document.getElementById("title").value = task.getTitle();
+  document.getElementById("description").value = task.getDescription();
+  document.getElementById("due-date").value = formatISO(
+    new Date(task.getDueDate()),
+    { representation: "date" }
+  );
+  document.getElementById("priority").value = task.getPriority();
 }
 
 function addDeleteButton() {
