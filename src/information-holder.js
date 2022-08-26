@@ -7,7 +7,6 @@ const tasks = [];
 function setTask(title, description, dueDate, priority) {
   let dueDateFormatted = dueDate.replace(/-/g, "/");
   let dueDateObj = new Date(dueDateFormatted).toLocaleDateString("en-us", {
-    weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
