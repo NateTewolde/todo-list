@@ -28,9 +28,14 @@ function displayTasks(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     row[i] = document.createElement("div");
     row[i].classList.add("task-row");
+    row[i].setAttribute("data-task-id", i);
     let taskItems = document.createElement("div");
     taskItems.classList.add("task-items");
+    let revisionItems = document.createElement("div");
+    revisionItems.classList.add("revision-items");
+
     let editBtn = addEditButton();
+    let deleteBtn = addDeleteButton();
 
     let title = document.createElement("div");
     title.classList.add("task-title");
@@ -52,8 +57,12 @@ function displayTasks(tasks) {
     taskItems.appendChild(description);
     taskItems.appendChild(dueDate);
     taskItems.appendChild(priority);
+    revisionItems.appendChild(editBtn);
+    revisionItems.appendChild(deleteBtn);
+
     row[i].appendChild(taskItems);
-    row[i].appendChild(editBtn);
+    row[i].appendChild(revisionItems);
+
     let taskPriority = tasks[i].getPriority();
     if (taskPriority === "1") {
       priority1Container.appendChild(row[i]);
@@ -108,6 +117,33 @@ function addEditButton() {
   editBtn.classList.add("edit-button");
   editBtn.textContent = "Edit";
   return editBtn;
+}
+
+function formatEditBtn() {
+  const editBtn = document.querySelector(".edit-button");
+  editBtn.addEventListener("click", () => {
+    //form pops up populated already with the users input
+    //that the user can change. If user submits then it deletes
+    //the task and a new task is made. Easy
+    //delete button can be seperate from edit button. Edit Delete
+  });
+}
+
+function addDeleteButton() {
+  const deleteBtn = document.createElement("div");
+  deleteBtn.classList.add("delete-button");
+  deleteBtn.textContent = "Delete";
+  return deleteBtn;
+}
+
+function formatDeleteBtn() {
+  const deleteBtn = document.querySelector(".delete-button");
+  deleteBtn.addEventListener("click", () => {});
+  //gets the data-task-id attribute.
+  //this is the index of the task in getSortedByDate, not tasks so this
+  //makes it a little harder. or i could add a task# to each task object
+
+  //steps:
 }
 
 //helper function to clear a element
