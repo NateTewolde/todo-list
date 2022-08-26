@@ -35,20 +35,18 @@ function getSortedByDate() {
   const sortedByDate = unsortedTasks.sort(
     (a, b) => new Date(a.getDueDate()) - new Date(b.getDueDate())
   );
-
   return sortedByDate;
 }
 
 function deleteTask(theTasksId) {
-  console.log("taskID: " + theTasksId);
   let taskIndex = tasks.findIndex((index) =>
     checkForMatchingIds(index, theTasksId)
   );
-  console.log(taskIndex);
+  tasks.splice(taskIndex, 1);
 }
 
-function checkForMatchingIds(index, theTasksId) {
-  return tasks[index] == theTasksId;
+function checkForMatchingIds(task, theTasksId) {
+  return task.getId() == theTasksId;
 }
 
 //Helper function that returns a random number between and including a mix/max
