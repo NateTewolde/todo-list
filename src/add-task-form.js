@@ -16,6 +16,10 @@ function createTaskForm() {
   const formSection = document.createElement("div");
   formSection.setAttribute("id", "form-section");
 
+  if (checkForEditing() === true) {
+    formSection.classList.add("editing-form");
+  }
+
   const formHeader = document.createElement("div");
   formHeader.classList.add("form-header");
   formHeader.textContent = "New Task";
@@ -112,6 +116,10 @@ function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
   submitFormBtn.addEventListener("click", () => {
     getTaskInput();
+
+    // if (checkForEditing() === true) {
+    //   //should delete the original here.
+    // }
     refreshTasks();
   });
 }
@@ -131,6 +139,15 @@ function getTaskInput() {
 function checkForForm() {
   const formCheck = document.getElementById("form-section");
   if (!formCheck) {
+    return false;
+  }
+  return true;
+}
+
+//checks if an editing task form is present on the page
+function checkForEditing() {
+  const editingCheck = document.querySelector(".editing-task");
+  if (!editingCheck) {
     return false;
   }
   return true;
