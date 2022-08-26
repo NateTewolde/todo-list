@@ -59,11 +59,16 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
-  padding-right: 32px;
+  padding-right: 24px;
   border-bottom: 1px solid gray;
 }
 
 .task-items {
+  display: flex;
+  column-gap: 8px;
+}
+
+.revision-items {
   display: flex;
   column-gap: 8px;
 }
