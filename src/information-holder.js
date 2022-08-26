@@ -20,7 +20,9 @@ const Task = (title, description, dueDate, priority) => {
   const getDescription = () => description;
   const getDueDate = () => dueDate;
   const getPriority = () => priority;
-  return { getTitle, getDescription, getDueDate, getPriority };
+  const taskId = title + getRandomIntInclusive();
+  const getId = () => taskId;
+  return { getTitle, getDescription, getDueDate, getPriority, getId };
 };
 
 function getTasks() {
@@ -35,6 +37,15 @@ function getSortedByDate() {
   );
 
   return sortedByDate;
+}
+
+//Helper function that returns a random number between and including a mix/max
+function getRandomIntInclusive() {
+  let setMin = 0;
+  let setMax = 10000;
+  let min = Math.ceil(setMin);
+  let max = Math.floor(setMax);
+  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
 export { setTask, getTasks, getSortedByDate };
