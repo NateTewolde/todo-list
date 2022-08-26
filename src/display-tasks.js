@@ -82,6 +82,8 @@ function displayTasks(tasks) {
   tasksContainer.appendChild(priority3Container);
   tasksContainer.appendChild(priority4Container);
   content.appendChild(tasksContainer);
+  //formatEditBtn();
+  formatDeleteBtn();
 }
 
 function refreshTasks() {
@@ -89,8 +91,6 @@ function refreshTasks() {
   displayTasks();
   displayAddTasksBtn();
   formatAddTaskBtn();
-  //formatEditBtn();
-  formatDeleteBtn();
 }
 
 function displayAddTasksBtn() {
@@ -142,7 +142,6 @@ function formatDeleteBtn() {
   deleteTaskBtns.forEach((deleteBtn) => {
     deleteBtn.addEventListener("click", () => {
       setDeleteTask(deleteBtn.parentNode.parentNode);
-      refreshTasks();
     });
   });
 }
@@ -150,6 +149,8 @@ function formatDeleteBtn() {
 function setDeleteTask(task) {
   let taskId = task.getAttribute("data-task-id");
   deleteTask(taskId);
+  const taskRow = document.querySelector("[data-task-id=" + taskId + "]");
+  taskRow.remove();
 }
 
 //helper function to clear a element
