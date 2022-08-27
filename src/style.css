@@ -39,19 +39,28 @@ body {
   background-color: #c0eb80;
 }
 
-.priority1-container {
+.priority-container {
+  padding: 24px;
+}
+
+.priority-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.priority1-tasks {
   background-color: rgb(216, 96, 96);
 }
 
-.priority2-container {
+.priority2-tasks {
   background-color: rgb(217, 171, 87);
 }
 
-.priority3-container {
+.priority3-tasks {
   background-color: rgb(226, 226, 81);
 }
 
-.priority4-container {
+.priority4-tasks {
   background-color: white;
 }
 
