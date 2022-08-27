@@ -88,7 +88,7 @@ function displayTasks(tasks) {
 }
 
 function refreshTasks() {
-  removeAllChildNodes(content);
+  clearPage(content);
   displayTasks();
   displayAddTasksBtn();
   formatAddTaskBtn();
@@ -174,6 +174,17 @@ function setDeleteTask(taskElement) {
   taskRow.remove();
 }
 
+function refreshSidebar() {
+  const sideBar = document.querySelector(".sidebar");
+  sideBar.removeAttribute("class");
+  sideBar.classList.add("sidebar");
+}
+
+function clearPage() {
+  const content = document.querySelector("#content");
+  removeAllChildNodes(content);
+}
+
 //helper function to clear a element
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -181,4 +192,11 @@ function removeAllChildNodes(parent) {
   }
 }
 
-export { displayTasks, refreshTasks, removeAllChildNodes, setDeleteTask };
+export {
+  displayTasks,
+  refreshTasks,
+  removeAllChildNodes,
+  setDeleteTask,
+  clearPage,
+  refreshSidebar,
+};
