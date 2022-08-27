@@ -125,6 +125,7 @@ function displayTasks(tasks) {
   content.appendChild(tasksContainer);
   formatEditBtn();
   formatDeleteBtn();
+  checkForPriorities();
 }
 
 function refreshTasks() {
@@ -230,6 +231,30 @@ function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
+}
+
+function checkForPriorities() {
+  const priority1Tasks = document.querySelector(".priority1-tasks");
+  const priority3Tasks = document.querySelector(".priority3-tasks");
+  const priority2Tasks = document.querySelector(".priority2-tasks");
+  const priority4Tasks = document.querySelector(".priority4-tasks");
+
+  if (!priority1Tasks.hasChildNodes()) {
+    removePriorityTitle(priority1Tasks);
+  }
+  if (!priority2Tasks.hasChildNodes()) {
+    removePriorityTitle(priority2Tasks);
+  }
+  if (!priority3Tasks.hasChildNodes()) {
+    removePriorityTitle(priority3Tasks);
+  }
+  if (!priority4Tasks.hasChildNodes()) {
+    removePriorityTitle(priority4Tasks);
+  }
+}
+
+function removePriorityTitle(priorityTasks) {
+  priorityTasks.parentNode.remove();
 }
 
 export {
