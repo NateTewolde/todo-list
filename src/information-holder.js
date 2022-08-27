@@ -23,10 +23,11 @@ const Task = (title, description, dueDate, priority) => {
   const getDescription = () => description;
   const getDueDate = () => dueDate;
   const getPriority = () => priority;
-  const taskId = ("Task" + title + getRandomIntInclusive()).replace(
-    /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g,
-    ""
-  );
+  const taskId = (
+    "Task" +
+    title.replace(/ /g, "_") +
+    getRandomIntInclusive()
+  ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
   const getId = () => taskId;
   return { getTitle, getDescription, getDueDate, getPriority, getId };
 };
