@@ -29,7 +29,24 @@ const Task = (title, description, dueDate, priority) => {
     getRandomIntInclusive()
   ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
   const getId = () => taskId;
-  return { getTitle, getDescription, getDueDate, getPriority, getId };
+  const completedTracker = [false];
+  const updateCompleteTask = () => {
+    if (!completedTracker[completedTracker.length - 1]) {
+      completedTracker.push(true);
+      return;
+    }
+    completedTracker.push(false);
+  };
+  const getCompleted = () => completedTracker[completedTracker.length - 1];
+  return {
+    getTitle,
+    getDescription,
+    getDueDate,
+    getPriority,
+    getId,
+    updateCompleteTask,
+    getCompleted,
+  };
 };
 
 function getTasks() {
