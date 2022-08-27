@@ -18,14 +18,38 @@ function displayTasks(tasks) {
   const row = [];
   let tasksContainer = document.createElement("div");
   tasksContainer.setAttribute("id", "tasks-container");
-  let priority1Container = document.createElement("div");
-  priority1Container.setAttribute("class", "priority1-container");
-  let priority2Container = document.createElement("div");
-  priority2Container.setAttribute("class", "priority2-container");
-  let priority3Container = document.createElement("div");
-  priority3Container.setAttribute("class", "priority3-container");
-  let priority4Container = document.createElement("div");
-  priority4Container.setAttribute("class", "priority4-container");
+
+  let priority1Tasks = document.createElement("div");
+  priority1Tasks.setAttribute("class", "priority1-tasks");
+  let priority1Title = document.createElement("div");
+  priority1Title.classList.add("priority-title");
+  priority1Title.textContent = "Priority 1";
+  priority1Tasks.appendChild(priority1Title);
+
+  let priority2Tasks = document.createElement("div");
+  priority2Tasks.setAttribute("class", "priority2-tasks");
+
+  let priority2Title = document.createElement("div");
+  priority2Title.classList.add("priority-title");
+  priority2Title.textContent = "Priority 2";
+  priority2Tasks.appendChild(priority2Title);
+
+  let priority3Tasks = document.createElement("div");
+  priority3Tasks.setAttribute("class", "priority3-tasks");
+
+  let priority3Title = document.createElement("div");
+  priority3Title.classList.add("priority-title");
+  priority3Title.textContent = "Priority 3";
+  priority3Tasks.appendChild(priority3Title);
+
+  let priority4Tasks = document.createElement("div");
+  priority4Tasks.setAttribute("class", "priority4-tasks");
+
+  let priority4Title = document.createElement("div");
+  priority4Title.classList.add("priority-title");
+  priority4Title.textContent = "Priority 4";
+  priority4Tasks.appendChild(priority4Title);
+
   for (let i = 0; i < tasks.length; i++) {
     row[i] = document.createElement("div");
     row[i].classList.add("task-row");
@@ -50,14 +74,9 @@ function displayTasks(tasks) {
     dueDate.classList.add("task-due-date");
     dueDate.textContent = tasks[i].getDueDate();
 
-    let priority = document.createElement("div");
-    priority.classList.add("task-priority");
-    priority.textContent = tasks[i].getPriority();
-
     taskItems.appendChild(title);
     taskItems.appendChild(description);
     taskItems.appendChild(dueDate);
-    taskItems.appendChild(priority);
     revisionItems.appendChild(editBtn);
     revisionItems.appendChild(deleteBtn);
 
@@ -66,18 +85,39 @@ function displayTasks(tasks) {
 
     let taskPriority = tasks[i].getPriority();
     if (taskPriority === "1") {
-      priority1Container.appendChild(row[i]);
+      priority1Tasks.appendChild(row[i]);
     }
     if (taskPriority === "2") {
-      priority2Container.appendChild(row[i]);
+      priority2Tasks.appendChild(row[i]);
     }
     if (taskPriority === "3") {
-      priority3Container.appendChild(row[i]);
+      priority3Tasks.appendChild(row[i]);
     }
     if (taskPriority === "") {
-      priority4Container.appendChild(row[i]);
+      priority4Tasks.appendChild(row[i]);
     }
   }
+
+  let priority1Container = document.createElement("div");
+  priority1Container.classList.add("priority-container");
+  priority1Container.appendChild(priority1Title);
+  priority1Container.appendChild(priority1Tasks);
+
+  let priority2Container = document.createElement("div");
+  priority2Container.classList.add("priority-container");
+  priority2Container.appendChild(priority2Title);
+  priority2Container.appendChild(priority2Tasks);
+
+  let priority3Container = document.createElement("div");
+  priority3Container.classList.add("priority-container");
+  priority3Container.appendChild(priority3Title);
+  priority3Container.appendChild(priority3Tasks);
+
+  let priority4Container = document.createElement("div");
+  priority4Container.classList.add("priority-container");
+  priority4Container.appendChild(priority4Title);
+  priority4Container.appendChild(priority4Tasks);
+
   tasksContainer.appendChild(priority1Container);
   tasksContainer.appendChild(priority2Container);
   tasksContainer.appendChild(priority3Container);
