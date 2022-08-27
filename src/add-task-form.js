@@ -1,4 +1,4 @@
-import { refreshTasks } from "./display-tasks";
+import { refreshTasks, setDeleteTask } from "./display-tasks";
 import { setTask, getTasks } from "./information-holder";
 
 function addTaskForm() {
@@ -117,9 +117,11 @@ function submitFormButton() {
   submitFormBtn.addEventListener("click", () => {
     getTaskInput();
 
-    // if (checkForEditing() === true) {
-    //   //should delete the original here.
-    // }
+    if (checkForEditing() === true) {
+      let taskElement = document.querySelector(".editing-task");
+      setDeleteTask(taskElement);
+    }
+
     refreshTasks();
   });
 }
