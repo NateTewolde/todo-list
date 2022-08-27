@@ -3,7 +3,7 @@
 //that can have tasks added to it.
 
 import addTaskForm from "./add-task-form";
-import { refreshTasks, removeAllChildNodes } from "./display-tasks";
+import { refreshTasks, clearPage } from "./display-tasks";
 import { getTasks, setTask } from "./information-holder";
 import createHomepage from "./home-page";
 import createTodayPage from "./today-page";
@@ -34,7 +34,7 @@ function formatTabs() {
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       let tabIndex = tab.getAttribute("data-tab-id");
-      refreshPage();
+      clearPage();
 
       if (tabIndex === "0") {
         createHomepage();
@@ -50,11 +50,6 @@ function formatTabs() {
       }
     });
   });
-}
-
-function refreshPage() {
-  const content = document.querySelector("#content");
-  removeAllChildNodes(content);
 }
 
 //then format edit btn, maybe easiest to just bring up the form again
