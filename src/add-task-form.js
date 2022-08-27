@@ -1,5 +1,13 @@
-import { refreshTasks, setDeleteTask } from "./display-tasks";
+import {
+  refreshTasks,
+  setDeleteTask,
+  clearPage,
+  refreshSidebar,
+} from "./display-tasks";
 import { setTask, getTasks } from "./information-holder";
+import createTodayPage from "./today-page";
+import createThisWeekPage from "./this-week-page";
+import createHomepage from "./home-page";
 
 function addTaskForm() {
   createTaskForm();
@@ -121,8 +129,18 @@ function submitFormButton() {
       let taskElement = document.querySelector(".editing-task");
       setDeleteTask(taskElement);
     }
-
-    refreshTasks();
+    if (checkForTodayPage() === true) {
+      clearPage();
+      createTodayPage();
+      return;
+    }
+    if (checkForWeekPage() == true) {
+      clearPage();
+      createThisWeekPage();
+      return;
+    }
+    clearPage();
+    createHomepage();
   });
 }
 
@@ -146,7 +164,7 @@ function checkForForm() {
   return true;
 }
 
-//checks if an editing task form is present on the page
+//returns true if an editing task form is present on the page
 function checkForEditing() {
   const editingCheck = document.querySelector(".editing-task");
   if (!editingCheck) {
@@ -154,4 +172,23 @@ function checkForEditing() {
   }
   return true;
 }
+
+//returns true if the today page is currently on the page
+function checkForTodayPage() {
+  const todayPageCheck = document.querySelector(".today-page");
+  if (!todayPageCheck) {
+    return false;
+  }
+  return true;
+}
+
+//returns true if the week page is currently on the page
+function checkForWeekPage() {
+  const weekPageCheck = document.querySelector(".week-page");
+  if (!weekPageCheck) {
+    return false;
+  }
+  return true;
+}
+
 export default addTaskForm;
