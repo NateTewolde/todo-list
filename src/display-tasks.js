@@ -7,11 +7,6 @@ import {
 import addTaskForm from "./add-task-form";
 import { formatISO } from "date-fns";
 
-//can visibly seperate priorities using CSS,
-//use colors shades for those sections
-//like red for 1, orange: 2, yellow: 3
-// and white or something for none
-
 //displays tasks seperated by priority level from 1-none
 function displayTasks(tasks) {
   const content = document.querySelector("#content");
@@ -172,8 +167,8 @@ function formatDeleteBtn() {
   });
 }
 
-function setDeleteTask(task) {
-  let taskId = task.getAttribute("data-task-id");
+function setDeleteTask(taskElement) {
+  let taskId = taskElement.getAttribute("data-task-id");
   deleteTask(taskId);
   const taskRow = document.querySelector("[data-task-id=" + taskId + "]");
   taskRow.remove();
@@ -186,4 +181,4 @@ function removeAllChildNodes(parent) {
   }
 }
 
-export { displayTasks, refreshTasks, removeAllChildNodes };
+export { displayTasks, refreshTasks, removeAllChildNodes, setDeleteTask };
