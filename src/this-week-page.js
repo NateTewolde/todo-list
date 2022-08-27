@@ -1,9 +1,14 @@
 import { getSortedByDate } from "./information-holder";
 import { isThisWeek, getWeek, lastDayOfWeek } from "date-fns";
-import { displayTasks } from "./display-tasks";
+import { displayTasks, refreshSidebar } from "./display-tasks";
 
 function createThisWeekPage() {
   const content = document.querySelector("#content");
+
+  const sideBar = document.querySelector(".sidebar");
+  refreshSidebar();
+  sideBar.classList.add("week-page");
+  sideBar.classList.add("current-tab");
 
   const thisWeeksDateObj = new Date().toLocaleDateString("en-us", {
     weekday: "short",
