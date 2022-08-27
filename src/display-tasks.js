@@ -234,6 +234,7 @@ function formatDeleteBtn() {
   deleteTaskBtns.forEach((deleteBtn) => {
     deleteBtn.addEventListener("click", () => {
       setDeleteTask(deleteBtn.parentNode.parentNode);
+      checkForPriorities();
     });
   });
 }
@@ -265,26 +266,23 @@ function removeAllChildNodes(parent) {
 
 function checkForPriorities() {
   const priority1Tasks = document.querySelector(".priority1-tasks");
-  const priority3Tasks = document.querySelector(".priority3-tasks");
   const priority2Tasks = document.querySelector(".priority2-tasks");
+  const priority3Tasks = document.querySelector(".priority3-tasks");
   const priority4Tasks = document.querySelector(".priority4-tasks");
 
-  if (!priority1Tasks.hasChildNodes()) {
-    removePriorityTitle(priority1Tasks);
-  }
-  if (!priority2Tasks.hasChildNodes()) {
-    removePriorityTitle(priority2Tasks);
-  }
-  if (!priority3Tasks.hasChildNodes()) {
-    removePriorityTitle(priority3Tasks);
-  }
-  if (!priority4Tasks.hasChildNodes()) {
-    removePriorityTitle(priority4Tasks);
-  }
+  removePriorityTitle(priority1Tasks);
+  removePriorityTitle(priority2Tasks);
+  removePriorityTitle(priority3Tasks);
+  removePriorityTitle(priority4Tasks);
 }
 
 function removePriorityTitle(priorityTasks) {
-  priorityTasks.parentNode.remove();
+  if (priorityTasks == null) {
+    return;
+  }
+  if (!priorityTasks.hasChildNodes()) {
+    priorityTasks.parentNode.remove();
+  }
 }
 
 export {
