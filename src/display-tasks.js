@@ -74,6 +74,14 @@ function displayTasks(tasks) {
     dueDate.classList.add("task-due-date");
     dueDate.textContent = tasks[i].getDueDate();
 
+    let completedCheckbox = document.createElement("input");
+    completedCheckbox.setAttribute("type", "checkbox");
+    completedCheckbox.classList.add("completed-checkbox");
+    if (tasks[i].getCompleted()) {
+      completedCheckbox.setAttribute("checked", "");
+    }
+
+    taskItems.appendChild(completedCheckbox);
     taskItems.appendChild(title);
     taskItems.appendChild(description);
     taskItems.appendChild(dueDate);
@@ -126,6 +134,7 @@ function displayTasks(tasks) {
   formatEditBtn();
   formatDeleteBtn();
   checkForPriorities();
+  formatCompletedCheckbox();
 }
 
 function refreshTasks() {
@@ -156,6 +165,27 @@ function removeAddTaskButton() {
     return;
   }
   addTaskBtn.remove();
+}
+
+//when a checkbox is clicked:
+//call task object and update a completed property to true
+//
+function formatCompletedCheckbox() {
+  const completedCheckboxes = document.querySelectorAll(".completed-checkbox");
+  completedCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("click", () => {
+      setCompleted(checkbox.parentNode.parentNode);
+    });
+  });
+}
+
+function setCompleted(taskElement) {
+  let taskId = taskElement.getAttribute("data-task-id");
+  let taskIndex = findTaskIndex(taskId);
+  let tasks = getTasks();
+  let task = tasks[taskIndex];
+
+  task.updateCompleteTask();
 }
 
 function addEditButton() {
