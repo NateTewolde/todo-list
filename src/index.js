@@ -8,9 +8,8 @@ import { getTasks, setTask } from "./information-holder";
 import createHomepage from "./home-page";
 import createTodayPage from "./today-page";
 import createThisWeekPage from "./this-week-page";
+import createProjectsPage from "./projects-page";
 import "./style.css";
-
-//npm install date-fns --save for homepc
 
 //temporary example tasks for testing
 setTask("Task2", "Description2", "2022-08-27", "2");
@@ -34,6 +33,10 @@ function formatTabs() {
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       let tabIndex = tab.getAttribute("data-tab-id");
+      if (tabIndex === "3") {
+        createProjectsPage();
+        return;
+      }
       clearPage();
 
       if (tabIndex === "0") {
@@ -45,14 +48,18 @@ function formatTabs() {
       if (tabIndex === "2") {
         createThisWeekPage();
       }
-      if (tabIndex === "3") {
-        createProjectsPage();
-      }
     });
   });
 }
 
-//then format edit btn, maybe easiest to just bring up the form again
-//then make it so that each priority section has a header and remove the priority # from the task itself
-//then add a completed checkmark box
-//then format Projects section, should basically be the ability to make homepages with a different sidebar and header name
+//then format Projects section,
+//should basically be the ability to make homepages with a
+//different sidebar and header name
+//and the tasks from there will populate home
+
+//each project will work like todays page with displayTasks(task array)
+//make it a page where you can click on to make new projects
+//which will work like their own thing. can add a project ID
+// to each task object to identify which tasks should be displayed in
+//the projects page. home, today and this week will display all projects
+//but projects will only display their own tasks.
