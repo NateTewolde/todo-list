@@ -8,22 +8,26 @@ import { getTasks, setTask } from "./information-holder";
 import createHomepage from "./home-page";
 import createTodayPage from "./today-page";
 import createThisWeekPage from "./this-week-page";
-import createProjectsPage from "./projects-page";
+import {
+  createProjectsPage,
+  addProjectTab,
+  refreshProjectsTitleAttributes,
+} from "./projects-page";
 import "./style.css";
 
 //temporary example tasks for testing
-setTask("Task2", "Description2", "2022-08-27", "2");
-setTask("Task1", "Description1", "2022-08-21", "1");
+setTask("Task2", "Description2", "2022-09-01", "2", "test");
+setTask("Task1", "Description1", "2022-08-28", "1", "test");
 setTask("Task2", "Description2", "2022-08-26", "2");
 
-setTask("Task4Date2", "Description4", "2022-08-25", "");
-setTask("Task4Date1", "Description4", "2020-08-24", "");
+setTask("Task4Date2", "Description4", "2022-08-31", "", "test");
+setTask("Task4Date1", "Description4", "2020-09-01", "");
 setTask("Task4Date4", "Description4", "2025-01-01", "");
 setTask("Task4Date3", "Description4", "2023-05-01", "");
 
-setTask("Task3", "Description3", "2022-08-26", "3");
-setTask("Task3", "Description3", "2022-08-24", "3");
-setTask("Task3", "Description3", "2022-08-25", "3");
+setTask("Task3", "Description3", "2022-08-26", "3", "test");
+setTask("Task3", "Description3", "2022-08-28", "3");
+setTask("Task3", "Description3", "2022-09-02", "3");
 
 createHomepage();
 formatTabs();
@@ -32,6 +36,7 @@ function formatTabs() {
   const tabs = document.querySelectorAll("[data-tab-id]");
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
+      refreshProjectsTitleAttributes();
       let tabIndex = tab.getAttribute("data-tab-id");
       if (tabIndex === "3") {
         createProjectsPage();
