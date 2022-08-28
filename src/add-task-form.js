@@ -35,7 +35,7 @@ function createTaskForm() {
   const createTaskForm = document.createElement("form");
   createTaskForm.setAttribute("action", "");
   createTaskForm.setAttribute("method", "post");
-  createTaskForm.setAttribute("id", "new_book_form");
+  createTaskForm.setAttribute("id", "new_task_form");
 
   const titleField = document.createElement("div");
   titleField.classList.add("form-field");
