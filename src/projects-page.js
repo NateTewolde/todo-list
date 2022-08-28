@@ -1,9 +1,11 @@
-import { refreshSidebar } from "./display-tasks";
+import { displayTasks, refreshSidebar } from "./display-tasks";
 import {
   addProject,
   checkForProjectName,
   getProjects,
   getRandomIntInclusive,
+  getSortedByDate,
+  getProjectId,
 } from "./information-holder";
 import { removeAllChildNodes, clearPage } from "./display-tasks";
 import "./style.css";
@@ -14,6 +16,7 @@ const projectsContainer = document.querySelector(".projects-container");
 function refreshProjects() {
   clearProjects();
   displayProjects();
+  formatProjectTabs();
   formatAddProjectBtn();
 }
 
@@ -22,7 +25,7 @@ function createProjectsPage() {
   refreshSidebar();
   sideBar.classList.add("projects-page");
   sideBar.classList.add("current-tab");
-  //refreshProjects();
+  refreshProjects();
   addProjectTab();
 }
 
@@ -111,13 +114,33 @@ function displayProjects() {
   }
 }
 
+function formatProjectTabs() {
+  const projectTabs = document.querySelectorAll("[data-project-id]");
+  projectTabs.forEach((projectTab) => {
+    projectTab.addEventListener("click", () => {
+      let projectName = projectTab.getAttribute("data-project-id");
+      clearPage();
+      const projectTasks = getProjectsTasks(projectName);
+      console.log(projectTasks);
+      displayTasks(projectTasks);
+      refreshProjects();
+    });
+  });
+}
+
+function getProjectsTasks(projectName) {
+  const tasks = getSortedByDate();
+
+  const projectTasks = tasks.filter(
+    (task) => task.getProjectId() === projectName
+  );
+  return projectTasks;
+}
+
 function clearProjects() {
   removeAllChildNodes(projectsContainer);
 }
 
 export default createProjectsPage;
 
-//format cancel button
-// then format all those projects so that when clicked on they display
-//tasks.
 //then put an add task button to add tasks to those projects
