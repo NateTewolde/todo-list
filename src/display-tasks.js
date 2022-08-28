@@ -154,6 +154,9 @@ function displayAddTasksBtn() {
 
 function formatAddTaskBtn() {
   const addTaskBtn = document.querySelector(".add-task-btn");
+  if (addTaskBtn == null) {
+    return;
+  }
   addTaskBtn.addEventListener("click", () => {
     addTaskForm();
     removeAddTaskButton();
@@ -210,7 +213,6 @@ function editTask(taskElement) {
   let taskIndex = findTaskIndex(taskId);
   let tasks = getTasks();
   let task = tasks[taskIndex];
-
   document.getElementById("title").value = task.getTitle();
   document.getElementById("description").value = task.getDescription();
   document.getElementById("due-date").value = formatISO(
