@@ -7,7 +7,8 @@ import {
 import addTaskForm from "./add-task-form";
 import { formatISO } from "date-fns";
 
-//displays tasks seperated by priority level from 1-none
+//input: array of tasks
+//displays tasks seperated by priority level from 1-4
 function displayTasks(tasks) {
   const content = document.querySelector("#content");
 
@@ -167,9 +168,6 @@ function removeAddTaskButton() {
   addTaskBtn.remove();
 }
 
-//when a checkbox is clicked:
-//call task object and update a completed property to true
-//
 function formatCompletedCheckbox() {
   const completedCheckboxes = document.querySelectorAll(".completed-checkbox");
   completedCheckboxes.forEach((checkbox) => {
@@ -292,4 +290,6 @@ export {
   setDeleteTask,
   clearPage,
   refreshSidebar,
+  displayAddTasksBtn,
+  formatAddTaskBtn,
 };
