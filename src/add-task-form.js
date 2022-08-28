@@ -8,6 +8,10 @@ import { setTask, getTasks } from "./information-holder";
 import createTodayPage from "./today-page";
 import createThisWeekPage from "./this-week-page";
 import createHomepage from "./home-page";
+import {
+  displayProjectPage,
+  refreshProjectsTitleAttributes,
+} from "./projects-page";
 
 function addTaskForm() {
   createTaskForm();
@@ -123,6 +127,14 @@ function createTaskForm() {
 function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
   submitFormBtn.addEventListener("click", () => {
+    if (checkforProjectPage() == true) {
+      let projectName = document.querySelector("[data-current-project]");
+      getTaskInput(projectName);
+      clearPage();
+      displayProjectPage(projectName);
+      return;
+    }
+
     getTaskInput();
 
     if (checkForEditing() === true) {
@@ -139,20 +151,20 @@ function submitFormButton() {
       createThisWeekPage();
       return;
     }
+
     clearPage();
     createHomepage();
   });
 }
 
-function getTaskInput() {
+function getTaskInput(projectName) {
   const titleInput = document.getElementById("title").value;
   const descriptionInput = document.getElementById("description").value;
   const dateInput = document.getElementById("due-date").value;
   const prioritySelected = document.getElementById("priority");
   const priorityInput =
     prioritySelected.options[prioritySelected.selectedIndex].text;
-
-  setTask(titleInput, descriptionInput, dateInput, priorityInput);
+  setTask(titleInput, descriptionInput, dateInput, priorityInput, projectName);
 }
 
 //checks if an add task form is present on the page
@@ -186,6 +198,14 @@ function checkForTodayPage() {
 function checkForWeekPage() {
   const weekPageCheck = document.querySelector(".week-page");
   if (!weekPageCheck) {
+    return false;
+  }
+  return true;
+}
+
+function checkforProjectPage() {
+  const projectPageCheck = document.querySelector("[data-current-project]");
+  if (!projectPageCheck) {
     return false;
   }
   return true;
