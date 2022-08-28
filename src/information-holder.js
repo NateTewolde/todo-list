@@ -5,7 +5,7 @@ const tasks = [];
 const projects = [];
 
 //Creates Task objects
-const Task = (title, description, dueDate, priority) => {
+const Task = (title, description, dueDate, priority, projectId) => {
   const getTitle = () => title;
   const getDescription = () => description;
   const getDueDate = () => dueDate;
@@ -25,6 +25,7 @@ const Task = (title, description, dueDate, priority) => {
     completedTracker.push(false);
   };
   const getCompleted = () => completedTracker[completedTracker.length - 1];
+  const getProjectId = () => projectId;
   return {
     getTitle,
     getDescription,
@@ -33,11 +34,12 @@ const Task = (title, description, dueDate, priority) => {
     getId,
     updateCompleteTask,
     getCompleted,
+    getProjectId,
   };
 };
 
 //uses Task to make objects and pushes them to tasks.
-function setTask(title, description, dueDate, priority) {
+function setTask(title, description, dueDate, priority, projectId) {
   let dueDateFormatted = dueDate.replace(/-/g, "/");
   let dueDateObj = new Date(dueDateFormatted).toLocaleDateString("en-us", {
     year: "numeric",
@@ -47,7 +49,8 @@ function setTask(title, description, dueDate, priority) {
   if (dueDateObj === "Invalid Date") {
     dueDateObj = "";
   }
-  tasks.push(Task(title, description, dueDateObj, priority));
+
+  tasks.push(Task(title, description, dueDateObj, priority, projectId));
 }
 
 function getTasks() {
