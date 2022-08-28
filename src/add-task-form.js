@@ -128,7 +128,8 @@ function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
   submitFormBtn.addEventListener("click", () => {
     if (checkforProjectPage() == true) {
-      let projectName = document.querySelector("[data-current-project]");
+      let projectElement = document.querySelector("[data-current-project]");
+      let projectName = projectElement.getAttribute("data-current-project");
       getTaskInput(projectName);
       clearPage();
       displayProjectPage(projectName);
