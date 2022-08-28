@@ -2,20 +2,7 @@
 
 //holds the Task objects.
 const tasks = [];
-
-//uses Task to make objects and pushes them to tasks.
-function setTask(title, description, dueDate, priority) {
-  let dueDateFormatted = dueDate.replace(/-/g, "/");
-  let dueDateObj = new Date(dueDateFormatted).toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-  if (dueDateObj === "Invalid Date") {
-    dueDateObj = "";
-  }
-  tasks.push(Task(title, description, dueDateObj, priority));
-}
+const projects = [];
 
 //Creates Task objects
 const Task = (title, description, dueDate, priority) => {
@@ -48,6 +35,20 @@ const Task = (title, description, dueDate, priority) => {
     getCompleted,
   };
 };
+
+//uses Task to make objects and pushes them to tasks.
+function setTask(title, description, dueDate, priority) {
+  let dueDateFormatted = dueDate.replace(/-/g, "/");
+  let dueDateObj = new Date(dueDateFormatted).toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  if (dueDateObj === "Invalid Date") {
+    dueDateObj = "";
+  }
+  tasks.push(Task(title, description, dueDateObj, priority));
+}
 
 function getTasks() {
   return tasks;
@@ -87,4 +88,36 @@ function getRandomIntInclusive() {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-export { setTask, getTasks, getSortedByDate, deleteTask, findTaskIndex };
+function addProject(projectName) {
+  projects.push(projectName);
+}
+
+function getProjects() {
+  return projects;
+}
+
+function removeProject(projectName) {
+  for (let i = 0; i < projects.length; i++) {
+    if (projects[i] === projectName) {
+      projects.splice(i, 1);
+    }
+  }
+}
+
+//returns true if a project name already exists
+function checkForProjectName(projectName) {
+  return projects.includes(projectName);
+}
+
+export {
+  setTask,
+  getTasks,
+  getSortedByDate,
+  deleteTask,
+  findTaskIndex,
+  addProject,
+  getProjects,
+  removeProject,
+  checkForProjectName,
+  getRandomIntInclusive,
+};
