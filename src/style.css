@@ -81,3 +81,8 @@ body {
   display: flex;
   column-gap: 8px;
 }
+
+.projects-header {
+  display: flex;
+  column-gap: 16px;
+}
