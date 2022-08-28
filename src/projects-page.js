@@ -7,7 +7,12 @@ import {
   getSortedByDate,
   getProjectId,
 } from "./information-holder";
-import { removeAllChildNodes, clearPage } from "./display-tasks";
+import {
+  removeAllChildNodes,
+  clearPage,
+  displayAddTasksBtn,
+  formatAddTaskBtn,
+} from "./display-tasks";
 import "./style.css";
 
 const content = document.querySelector("#content");
@@ -18,13 +23,13 @@ function refreshProjects() {
   displayProjects();
   formatProjectTabs();
   formatAddProjectBtn();
+  formatAddTaskBtn();
 }
 
 function createProjectsPage() {
   const sideBar = document.querySelector(".sidebar");
   refreshSidebar();
   sideBar.classList.add("projects-page");
-  sideBar.classList.add("current-tab");
   refreshProjects();
   addProjectTab();
 }
@@ -75,11 +80,14 @@ function createProjectForm() {
 
 function formatAddProjectBtn() {
   const addProjectBtn = document.querySelector(".add-project-btn");
-  if (addProjectBtn == null) {
+  if (addProjectBtn === null || addProjectBtn === undefined) {
     return;
   }
   addProjectBtn.addEventListener("click", () => {
     const nameInput = document.getElementById("project-input-name").value;
+    if (nameInput == null || nameInput == undefined) {
+      return;
+    }
 
     if (!checkForProjectName(nameInput)) {
       addProject(nameInput);
@@ -106,26 +114,40 @@ function displayProjects() {
   const projects = getProjects();
 
   for (let i = 0; i <= projects.length; i++) {
+    if (projects[i] == null) {
+      return;
+    }
     let projectTab = document.createElement("div");
     projectTab.classList.add("project-tab");
-    projectTab.setAttribute("data-project-id", projects[i]);
+    projectTab.setAttribute("data-project", projects[i]);
     projectTab.textContent = projects[i];
     projectsContainer.appendChild(projectTab);
   }
 }
 
 function formatProjectTabs() {
-  const projectTabs = document.querySelectorAll("[data-project-id]");
+  const projectTabs = document.querySelectorAll("[data-project]");
   projectTabs.forEach((projectTab) => {
+    if (projectTab === null || projectTab === undefined) {
+      return;
+    }
     projectTab.addEventListener("click", () => {
-      let projectName = projectTab.getAttribute("data-project-id");
+      let projectName = projectTab.getAttribute("data-project");
+      refreshProjectsTitleAttributes();
+      appendCurrentProjectToProjectsTitle(projectName);
       clearPage();
-      const projectTasks = getProjectsTasks(projectName);
-      console.log(projectTasks);
-      displayTasks(projectTasks);
-      refreshProjects();
+      displayProjectPage(projectName);
     });
   });
+}
+
+function displayProjectPage(projectName) {
+  clearPage();
+  const projectTasks = getProjectsTasks(projectName);
+  displayTasks(projectTasks);
+  refreshProjects();
+  displayAddTasksBtn();
+  formatAddTaskBtn();
 }
 
 function getProjectsTasks(projectName) {
@@ -137,10 +159,28 @@ function getProjectsTasks(projectName) {
   return projectTasks;
 }
 
+function appendCurrentProjectToProjectsTitle(projectName) {
+  const projectsTab = document.querySelector(".projects-tab-title");
+  projectsTab.setAttribute("data-current-project", projectName);
+}
+
+function refreshProjectsTitleAttributes() {
+  let projectsTitle = document.querySelector("[data-current-project]");
+  if (projectsTitle == null) {
+    return;
+  }
+  projectsTitle.removeAttribute("data-current-project");
+}
+
 function clearProjects() {
   removeAllChildNodes(projectsContainer);
 }
 
-export default createProjectsPage;
+export {
+  createProjectsPage,
+  addProjectTab,
+  displayProjectPage,
+  refreshProjectsTitleAttributes,
+};
 
-//then put an add task button to add tasks to those projects
+//steps: put an attribute in the
