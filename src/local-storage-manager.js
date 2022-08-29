@@ -19,11 +19,11 @@ function addToLocalStorage(keyName, keyValue) {
   if (!checkForLocalStorage()) {
     return;
   }
-  localStorage.setItem(keyName, keyValue);
+  localStorage.setItem(keyName, JSON.stringify(keyValue));
 }
 
 function getFromLocalStorage(keyName) {
-  return localStorage.getItem(keyName);
+  return JSON.parse(localStorage.getItem(keyName || "[]"));
 }
 
 function clearLocalStorage() {
