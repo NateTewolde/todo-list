@@ -83,7 +83,6 @@ function createTaskForm() {
   dueDateInput.setAttribute("type", "date");
   dueDateInput.setAttribute("name", "due-date");
   dueDateInput.setAttribute("id", "due-date");
-  //dueDateInput.setAttribute("placeholder", "08/22/2022");
   dueDateField.appendChild(dueDateLabel);
   dueDateField.appendChild(dueDateInput);
   createTaskForm.appendChild(dueDateField);
