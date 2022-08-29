@@ -4,7 +4,12 @@ import {
   clearPage,
   refreshSidebar,
 } from "./display-tasks";
-import { setTask, getTasks } from "./information-holder";
+import {
+  setTask,
+  getTasks,
+  getProjectId,
+  findTaskIndex,
+} from "./information-holder";
 import createTodayPage from "./today-page";
 import createThisWeekPage from "./this-week-page";
 import createHomepage from "./home-page";
@@ -127,21 +132,41 @@ function createTaskForm() {
 function submitFormButton() {
   const submitFormBtn = document.querySelector(".submit-form-btn");
   submitFormBtn.addEventListener("click", () => {
+    let projectName = "";
+    if (checkForEditing() === true) {
+      let taskElement = document.querySelector(".editing-task");
+      let taskId = taskElement.getAttribute("data-task-id");
+      let taskIndex = findTaskIndex(taskId);
+      let tasks = getTasks();
+      let task = tasks[taskIndex];
+      if (task.getProjectId() !== undefined) {
+        projectName += task.getProjectId();
+        submitProjectTask();
+      }
+      setDeleteTask(taskElement);
+    }
+
     if (checkforProjectPage() == true) {
       let projectElement = document.querySelector("[data-current-project]");
-      let projectName = projectElement.getAttribute("data-current-project");
-      getTaskInput(projectName);
-      clearPage();
-      displayProjectPage(projectName);
+      if (projectName == "") {
+        let projectId = projectElement.getAttribute("data-current-project");
+        projectName += projectId;
+      }
+      submitProjectTask();
+
       return;
     }
 
-    getTaskInput();
-
-    if (checkForEditing() === true) {
-      let taskElement = document.querySelector(".editing-task");
-      setDeleteTask(taskElement);
+    function submitProjectTask() {
+      getTaskInput(projectName);
+      clearPage();
+      displayProjectPage(projectName);
     }
+
+    if (checkForForm() === true) {
+      getTaskInput();
+    }
+
     if (checkForTodayPage() === true) {
       clearPage();
       createTodayPage();
@@ -159,6 +184,9 @@ function submitFormButton() {
 }
 
 function getTaskInput(projectName) {
+  if (!document.getElementById("title")) {
+    return;
+  }
   const titleInput = document.getElementById("title").value;
   const descriptionInput = document.getElementById("description").value;
   const dateInput = document.getElementById("due-date").value;
