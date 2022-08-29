@@ -10,6 +10,25 @@ import {
   refreshProjectsTitleAttributes,
 } from "./projects-page";
 import "./style.css";
+import { getFromLocalStorage } from "./local-storage-manager";
+
+formatTestBtn();
+function formatTestBtn() {
+  const testBtn = document.querySelector(".test-btn");
+
+  testBtn.addEventListener("click", () => {
+    const tasks = getFromLocalStorage("taskArray");
+    console.log(tasks);
+    console.log(tasks[0].getTitle());
+    const testTasks = getTasks();
+    const myTasks = testTasks.slice(0);
+    myTasks.splice(0, myTasks.length);
+    for (let i = 0; i < testTasks.length; i++) {
+      myTasks.push(testTasks[i]);
+    }
+    console.log(myTasks);
+  });
+}
 
 //temporary example tasks for testing
 setTask("Task2", "Description2", "2022-09-01", "2", "test");
