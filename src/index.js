@@ -1,7 +1,3 @@
-//layout: Home tab will show all tasks sorted by priority and date,
-//with their project name next to it. Home will also be like a project
-//that can have tasks added to it.
-
 import addTaskForm from "./add-task-form";
 import { refreshTasks, clearPage } from "./display-tasks";
 import { getTasks, setTask } from "./information-holder";
@@ -56,15 +52,3 @@ function formatTabs() {
     });
   });
 }
-
-//then format Projects section,
-//should basically be the ability to make homepages with a
-//different sidebar and header name
-//and the tasks from there will populate home
-
-//each project will work like todays page with displayTasks(task array)
-//make it a page where you can click on to make new projects
-//which will work like their own thing. can add a project ID
-// to each task object to identify which tasks should be displayed in
-//the projects page. home, today and this week will display all projects
-//but projects will only display their own tasks.
