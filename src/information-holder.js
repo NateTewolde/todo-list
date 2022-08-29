@@ -99,6 +99,12 @@ function updateTasksAndProjects() {
   const localProjects = getFromLocalStorage("projectArray").slice(0);
   projects.push(...localProjects);
 }
+// turn the methodless task objects from local storage
+//into normal tasks for updateTasksandprojects to repopulate tasks[] with. 
+function formatLocalTasks(){
+  const localTasks = 
+
+}
 
 function getTasks() {
   //updateTasksAndProjects();
