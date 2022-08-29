@@ -12,50 +12,47 @@ const tasks = [];
 const projects = [];
 
 //Creates Task objects
-const Task = (taskAttributes) => {
-  const getTitle = () => taskAttributes.title;
-  const getDescription = () => taskAttributes.description;
-  const getDueDate = () => taskAttributes.dueDate;
-  const getPriority = () => taskAttributes.priority;
-  const getId = () => taskAttributes.taskId;
-  const completedTracker = taskAttributes.completedTracker.slice(0);
-  const updateCompleteTask = () => {
-    if (!completedTracker[completedTracker.length - 1]) {
-      completedTracker.push(true);
-      return;
+const taskActions = {
+  getTitle() {
+    return this.title;
+  },
+  getDescription() {
+    return this.description;
+  },
+  getDueDate() {
+    return this.dueDate;
+  },
+  getPriority() {
+    return this.priority;
+  },
+  getId() {
+    return this.taskId;
+  },
+  updateCompleteTask() {
+    if (!this.completedTracker[this.completedTracker.length - 1]) {
+      this.completedTracker.push(true);
+    } else {
+      this.completedTracker.push(false);
     }
-    completedTracker.push(false);
-  };
-  const getCompleted = () => completedTracker[completedTracker.length - 1];
-  const getProjectId = () => taskAttributes.projectId;
-  return {
-    getTitle,
-    getDescription,
-    getDueDate,
-    getPriority,
-    getId,
-    updateCompleteTask,
-    getCompleted,
-    getProjectId,
-  };
+  },
+  getCompleted() {
+    return this.completedTracker[this.completedTracker.length - 1];
+  },
+  getProjectId() {
+    return this.projectId;
+  },
 };
 
-function taskAttributes(title, description, dueDate, priority, projectId) {
-  const completedTracker = [false];
-  const taskId = (
-    "Task" +
-    title.replace(/ /g, "_") +
-    getRandomIntInclusive()
-  ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
-  return {
-    title,
-    description,
-    dueDate,
-    priority,
-    projectId,
-    taskId,
-    completedTracker,
-  };
+function Task(title, description, dueDate, priority, projectId, taskId) {
+  let task = Object.create(taskActions);
+  task.title = title;
+  task.description = description;
+  task.dueDate = dueDate;
+  task.priority = priority;
+  task.projectId = projectId;
+  task.completedTracker = [false];
+  task.taskId = taskId;
+  return task;
 }
 
 //uses Task to make objects and pushes them to tasks.
@@ -69,10 +66,13 @@ function setTask(title, description, dueDate, priority, projectId) {
   if (dueDateObj === "Invalid Date") {
     dueDateObj = "";
   }
+  let taskId = (
+    "Task" +
+    title.replace(/ /g, "_") +
+    getRandomIntInclusive()
+  ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
 
-  tasks.push(
-    Task(taskAttributes(title, description, dueDateObj, priority, projectId))
-  );
+  tasks.push(Task(title, description, dueDateObj, priority, projectId, taskId));
   updateLocalStorage();
 }
 
