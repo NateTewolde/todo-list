@@ -217,7 +217,7 @@ function editTask(taskElement) {
   document.getElementById("title").value = task.getTitle();
   document.getElementById("description").value = task.getDescription();
   document.getElementById("priority").value = task.getPriority();
-  if (document.getElementById("due-date").value === "") {
+  if (task.getDueDate() === "") {
     return;
   }
   document.getElementById("due-date").value = formatISO(
