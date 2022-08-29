@@ -12,18 +12,13 @@ const tasks = [];
 const projects = [];
 
 //Creates Task objects
-const Task = (title, description, dueDate, priority, projectId) => {
-  const getTitle = () => title;
-  const getDescription = () => description;
-  const getDueDate = () => dueDate;
-  const getPriority = () => priority;
-  const taskId = (
-    "Task" +
-    title.replace(/ /g, "_") +
-    getRandomIntInclusive()
-  ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
-  const getId = () => taskId;
-  const completedTracker = [false];
+const Task = (taskAttributes) => {
+  const getTitle = () => taskAttributes.title;
+  const getDescription = () => taskAttributes.description;
+  const getDueDate = () => taskAttributes.dueDate;
+  const getPriority = () => taskAttributes.priority;
+  const getId = () => taskAttributes.taskId;
+  const completedTracker = taskAttributes.completedTracker.slice(0);
   const updateCompleteTask = () => {
     if (!completedTracker[completedTracker.length - 1]) {
       completedTracker.push(true);
@@ -32,7 +27,7 @@ const Task = (title, description, dueDate, priority, projectId) => {
     completedTracker.push(false);
   };
   const getCompleted = () => completedTracker[completedTracker.length - 1];
-  const getProjectId = () => projectId;
+  const getProjectId = () => taskAttributes.projectId;
   return {
     getTitle,
     getDescription,
@@ -44,6 +39,24 @@ const Task = (title, description, dueDate, priority, projectId) => {
     getProjectId,
   };
 };
+
+function taskAttributes(title, description, dueDate, priority, projectId) {
+  const completedTracker = [false];
+  const taskId = (
+    "Task" +
+    title.replace(/ /g, "_") +
+    getRandomIntInclusive()
+  ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
+  return {
+    title,
+    description,
+    dueDate,
+    priority,
+    projectId,
+    taskId,
+    completedTracker,
+  };
+}
 
 //uses Task to make objects and pushes them to tasks.
 function setTask(title, description, dueDate, priority, projectId) {
@@ -57,7 +70,9 @@ function setTask(title, description, dueDate, priority, projectId) {
     dueDateObj = "";
   }
 
-  tasks.push(Task(title, description, dueDateObj, priority, projectId));
+  tasks.push(
+    Task(taskAttributes(title, description, dueDateObj, priority, projectId))
+  );
   updateLocalStorage();
 }
 
@@ -75,11 +90,13 @@ function updateTasksAndProjects() {
     return;
   }
   tasks.splice(0, tasks.length);
-  const localTasks = getFromLocalStorage("taskArray");
+  const localTasks = getFromLocalStorage("taskArray").slice(0);
   tasks.push(...localTasks);
-
+  console.log(tasks[0]);
+  console.log(typeof tasks[0].title);
+  console.log(tasks[0].getTitle());
   projects.splice(0, projects.length);
-  const localProjects = getFromLocalStorage("projectArray");
+  const localProjects = getFromLocalStorage("projectArray").slice(0);
   projects.push(...localProjects);
 }
 
