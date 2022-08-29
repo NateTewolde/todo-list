@@ -1,5 +1,12 @@
 //module for holding data to be retrieved
 
+import {
+  checkForLocalStorage,
+  addToLocalStorage,
+  clearLocalStorage,
+  getFromLocalStorage,
+} from "./local-storage-manager";
+
 //holds the Task objects.
 const tasks = [];
 const projects = [];
@@ -51,9 +58,33 @@ function setTask(title, description, dueDate, priority, projectId) {
   }
 
   tasks.push(Task(title, description, dueDateObj, priority, projectId));
+  updateLocalStorage();
+}
+
+function updateLocalStorage() {
+  if (!checkForLocalStorage()) {
+    return;
+  }
+  clearLocalStorage();
+  addToLocalStorage("taskArray", tasks);
+  addToLocalStorage("projectArray", projects);
+}
+
+function updateTasksAndProjects() {
+  if (!checkForLocalStorage()) {
+    return;
+  }
+  tasks.splice(0, tasks.length);
+  const localTasks = getFromLocalStorage("taskArray");
+  tasks.push(...localTasks);
+
+  projects.splice(0, projects.length);
+  const localProjects = getFromLocalStorage("projectArray");
+  projects.push(...localProjects);
 }
 
 function getTasks() {
+  //updateTasksAndProjects();
   return tasks;
 }
 
@@ -69,6 +100,7 @@ function getSortedByDate() {
 function deleteTask(theTasksId) {
   let taskIndex = findTaskIndex(theTasksId);
   tasks.splice(taskIndex, 1);
+  updateLocalStorage();
 }
 
 function findTaskIndex(theTasksId) {
@@ -93,9 +125,11 @@ function getRandomIntInclusive() {
 
 function addProject(projectName) {
   projects.push(projectName);
+  updateLocalStorage();
 }
 
 function getProjects() {
+  //updateTasksAndProjects();
   return projects;
 }
 
@@ -105,6 +139,7 @@ function removeProject(projectName) {
       projects.splice(i, 1);
     }
   }
+  updateLocalStorage();
 }
 
 //returns true if a project name already exists
