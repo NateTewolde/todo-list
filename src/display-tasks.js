@@ -208,6 +208,7 @@ function formatEditBtn() {
   });
 }
 
+//Inputs the task's values into the form for editing
 function editTask(taskElement) {
   let taskId = taskElement.getAttribute("data-task-id");
   let taskIndex = findTaskIndex(taskId);
@@ -215,11 +216,14 @@ function editTask(taskElement) {
   let task = tasks[taskIndex];
   document.getElementById("title").value = task.getTitle();
   document.getElementById("description").value = task.getDescription();
+  document.getElementById("priority").value = task.getPriority();
+  if (document.getElementById("due-date").value === "") {
+    return;
+  }
   document.getElementById("due-date").value = formatISO(
     new Date(task.getDueDate()),
     { representation: "date" }
   );
-  document.getElementById("priority").value = task.getPriority();
 }
 
 function addDeleteButton() {
