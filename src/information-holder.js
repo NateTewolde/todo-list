@@ -223,4 +223,5 @@ export {
   getRandomIntInclusive,
   formatLocalTasks,
   updateTasksAndProjects,
+  updateLocalStorage,
 };
