@@ -181,6 +181,7 @@ export {
   addProjectTab,
   displayProjectPage,
   refreshProjectsTitleAttributes,
+  refreshProjects,
 };
 
 //steps: put an attribute in the
