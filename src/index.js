@@ -10,9 +10,11 @@ import {
 } from "./projects-page";
 import "./style.css";
 
-//add cancel button for Add task forms
-//Add rename button for projects
-//add project name to task row
+//Add rename button for projects -this could be hard because then
+//all tasks within that project would also have to be renamed.
+//add project name to task row -meh
+//delete button on project tabs should also delete all the tasks in it
+
 //style and make look nice and add visual button presses
 //and visual hovers over tasks
 
