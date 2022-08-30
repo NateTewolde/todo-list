@@ -6,6 +6,7 @@ import {
   getRandomIntInclusive,
   getSortedByDate,
   getProjectId,
+  removeProject,
 } from "./information-holder";
 import {
   removeAllChildNodes,
@@ -22,6 +23,7 @@ function refreshProjects() {
   clearProjects();
   displayProjects();
   formatProjectTabs();
+  formatDeleteProjectBtns();
   formatAddProjectBtn();
   formatAddTaskBtn();
 }
@@ -121,6 +123,11 @@ function displayProjects() {
     projectTab.classList.add("project-tab");
     projectTab.setAttribute("data-project", projects[i]);
     projectTab.textContent = projects[i];
+
+    let deleteProject = document.createElement("div");
+    deleteProject.classList.add("delete-project-btn");
+    deleteProject.textContent = "Delete";
+    projectTab.appendChild(deleteProject);
     projectsContainer.appendChild(projectTab);
   }
 }
@@ -137,6 +144,22 @@ function formatProjectTabs() {
       appendCurrentProjectToProjectsTitle(projectName);
       clearPage();
       displayProjectPage(projectName);
+    });
+  });
+}
+
+function formatDeleteProjectBtns() {
+  const deleteProjBtns = document.querySelectorAll(".delete-project-btn");
+  deleteProjBtns.forEach((deleteBtn) => {
+    if (deleteBtn == null) {
+      return;
+    }
+    deleteBtn.addEventListener("click", () => {
+      let projectName = deleteBtn.parentNode.getAttribute("data-project");
+      let projectTab = deleteBtn.parentNode;
+
+      projectTab.remove();
+      removeProject(projectName);
     });
   });
 }
