@@ -6,15 +6,6 @@ function checkForLocalStorage() {
   }
 }
 
-//anytime something is added or removed from tasks/projects
-//the local storage is cleared and updated
-//with the task and project arrays
-
-//so when would tasks/projects be updated with local storage data.
-//whenever getTasks or getProjects is called they also call
-//updateTasks/updateProjects which will splice and fill tasks and projects with
-//local storage data when available.
-
 function addToLocalStorage(keyName, keyValue) {
   if (!checkForLocalStorage()) {
     return;
