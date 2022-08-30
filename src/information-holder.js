@@ -12,6 +12,19 @@ const tasks = [];
 const projects = [];
 
 //Creates Task objects
+function Task(taskAttributes) {
+  let task = Object.create(taskActions);
+  task.title = taskAttributes.title;
+  task.description = taskAttributes.description;
+  task.dueDate = taskAttributes.dueDate;
+  task.priority = taskAttributes.priority;
+  task.projectId = taskAttributes.projectId;
+  task.completedTracker = taskAttributes.completedTracker;
+  task.taskId = taskAttributes.taskId;
+  return task;
+}
+
+//Adds task actions
 const taskActions = {
   getTitle() {
     return this.title;
@@ -43,16 +56,25 @@ const taskActions = {
   },
 };
 
-function Task(title, description, dueDate, priority, projectId, taskId) {
-  let task = Object.create(taskActions);
-  task.title = title;
-  task.description = description;
-  task.dueDate = dueDate;
-  task.priority = priority;
-  task.projectId = projectId;
-  task.completedTracker = [false];
-  task.taskId = taskId;
-  return task;
+//Creates object with non function task attributes
+function taskAttributes(
+  title,
+  description,
+  dueDate,
+  priority,
+  projectId,
+  taskId,
+  completedTracker
+) {
+  return {
+    title,
+    description,
+    dueDate,
+    priority,
+    projectId,
+    taskId,
+    completedTracker,
+  };
 }
 
 //uses Task to make objects and pushes them to tasks.
@@ -71,8 +93,21 @@ function setTask(title, description, dueDate, priority, projectId) {
     title.replace(/ /g, "_") +
     getRandomIntInclusive()
   ).replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, "");
+  const completedTracker = [false];
 
-  tasks.push(Task(title, description, dueDateObj, priority, projectId, taskId));
+  tasks.push(
+    Task(
+      taskAttributes(
+        title,
+        description,
+        dueDateObj,
+        priority,
+        projectId,
+        taskId,
+        completedTracker
+      )
+    )
+  );
   updateLocalStorage();
 }
 
@@ -92,19 +127,16 @@ function updateTasksAndProjects() {
   tasks.splice(0, tasks.length);
   const localTasks = getFromLocalStorage("taskArray").slice(0);
   tasks.push(...localTasks);
-  console.log(tasks[0]);
-  console.log(typeof tasks[0].title);
-  console.log(tasks[0].getTitle());
   projects.splice(0, projects.length);
   const localProjects = getFromLocalStorage("projectArray").slice(0);
   projects.push(...localProjects);
 }
 // turn the methodless task objects from local storage
-//into normal tasks for updateTasksandprojects to repopulate tasks[] with. 
-function formatLocalTasks(){
-  const localTasks = 
+//into normal tasks for updateTasksandprojects to repopulate tasks[] with.
+// function formatLocalTasks(){
+//   const localTasks =
 
-}
+// }
 
 function getTasks() {
   //updateTasksAndProjects();
