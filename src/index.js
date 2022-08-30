@@ -8,9 +8,16 @@ import {
   createProjectsPage,
   addProjectTab,
   refreshProjectsTitleAttributes,
+  refreshProjects,
 } from "./projects-page";
 import "./style.css";
 import { getFromLocalStorage } from "./local-storage-manager";
+
+//Make sure mark completed saves
+//add cancel button for Add task forms
+//add project name to task row
+//style and make look nice and add visual button presses
+//and visual hovers over tasks
 
 formatTestBtn();
 function formatTestBtn() {
@@ -30,22 +37,9 @@ function formatTestBtn() {
   });
 }
 
-//temporary example tasks for testing
-setTask("Task2", "Description2", "2022-09-01", "2", "test");
-setTask("Task1", "Description1", "2022-08-28", "1", "test");
-setTask("Task2", "Description2", "2022-08-26", "2");
-
-setTask("Task4Date2", "Description4", "2022-08-31", "", "test");
-setTask("Task4Date1", "Description4", "2020-09-01", "");
-setTask("Task4Date4", "Description4", "2025-01-01", "");
-setTask("Task4Date3", "Description4", "2023-05-01", "");
-
-setTask("Task3", "Description3", "2022-08-26", "3", "test");
-setTask("Task3", "Description3", "2022-08-28", "3");
-setTask("Task3", "Description3", "2022-09-02", "3");
-
 createHomepage();
 formatTabs();
+refreshProjects();
 
 function formatTabs() {
   const tabs = document.querySelectorAll("[data-tab-id]");
