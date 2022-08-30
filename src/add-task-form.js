@@ -1,15 +1,10 @@
 import {
-  refreshTasks,
   setDeleteTask,
   clearPage,
-  refreshSidebar,
+  displayAddTasksBtn,
+  formatAddTaskBtn,
 } from "./display-tasks";
-import {
-  setTask,
-  getTasks,
-  getProjectId,
-  findTaskIndex,
-} from "./information-holder";
+import { setTask, getTasks, findTaskIndex } from "./information-holder";
 import createTodayPage from "./today-page";
 import createThisWeekPage from "./this-week-page";
 import createHomepage from "./home-page";
@@ -21,6 +16,7 @@ import {
 function addTaskForm() {
   createTaskForm();
   submitFormButton();
+  cancelFormButton();
 }
 
 function createTaskForm() {
@@ -123,6 +119,12 @@ function createTaskForm() {
   submitBtn.textContent = "Submit";
   createTaskForm.appendChild(submitBtn);
 
+  const cancelBtn = document.createElement("button");
+  cancelBtn.classList.add("cancel-form-btn");
+  cancelBtn.setAttribute("type", "button");
+  cancelBtn.textContent = "Cancel";
+  createTaskForm.appendChild(cancelBtn);
+
   formSection.appendChild(formHeader);
   formSection.appendChild(createTaskForm);
   content.appendChild(formSection);
@@ -179,6 +181,22 @@ function submitFormButton() {
 
     clearPage();
     createHomepage();
+  });
+}
+
+function cancelFormButton() {
+  const cancelFormBtn = document.querySelector(".cancel-form-btn");
+  if (cancelFormBtn == null) {
+    return;
+  }
+  cancelFormBtn.addEventListener("click", () => {
+    const taskForm = document.getElementById("form-section");
+    if (taskForm == null) {
+      return;
+    }
+    taskForm.remove();
+    displayAddTasksBtn();
+    formatAddTaskBtn();
   });
 }
 
