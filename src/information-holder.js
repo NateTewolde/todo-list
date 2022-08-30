@@ -127,6 +127,9 @@ function updateTasksAndProjects() {
   tasks.splice(0, tasks.length);
   const localTasks = formatLocalTasks();
   tasks.push(...localTasks);
+  if (getFromLocalStorage("projectArray") == null) {
+    return;
+  }
   projects.splice(0, projects.length);
   const localProjects = getFromLocalStorage("projectArray").slice(0);
   projects.push(...localProjects);
@@ -135,13 +138,16 @@ function updateTasksAndProjects() {
 // turn the methodless task objects from local storage
 // into Task objects with working functions
 function formatLocalTasks() {
+  if (getFromLocalStorage("taskArray") == null) {
+    return tasks;
+  }
   const localTasks = getFromLocalStorage("taskArray").slice(0);
   const formattedLocalTasks = localTasks.map((task) => Task(task));
   return formattedLocalTasks;
 }
 
 function getTasks() {
-  //updateTasksAndProjects();
+  updateTasksAndProjects();
   return tasks;
 }
 
@@ -186,7 +192,7 @@ function addProject(projectName) {
 }
 
 function getProjects() {
-  //updateTasksAndProjects();
+  updateTasksAndProjects();
   return projects;
 }
 
@@ -216,4 +222,5 @@ export {
   checkForProjectName,
   getRandomIntInclusive,
   formatLocalTasks,
+  updateTasksAndProjects,
 };
