@@ -3,6 +3,8 @@ import {
   getSortedByDate,
   deleteTask,
   findTaskIndex,
+  updateTasksAndProjects,
+  updateLocalStorage,
 } from "./information-holder";
 import addTaskForm from "./add-task-form";
 import { formatISO } from "date-fns";
@@ -78,7 +80,7 @@ function displayTasks(tasks) {
     let completedCheckbox = document.createElement("input");
     completedCheckbox.setAttribute("type", "checkbox");
     completedCheckbox.classList.add("completed-checkbox");
-    if (tasks[i].getCompleted()) {
+    if (tasks[i].getCompleted() == true) {
       completedCheckbox.setAttribute("checked", "");
     }
 
@@ -185,8 +187,13 @@ function setCompleted(taskElement) {
   let taskIndex = findTaskIndex(taskId);
   let tasks = getTasks();
   let task = tasks[taskIndex];
-
-  task.updateCompleteTask();
+  if (task.getCompleted() === true) {
+    task.completedTracker.push(false);
+  } else {
+    task.completedTracker.push(true);
+  }
+  updateLocalStorage();
+  updateTasksAndProjects();
 }
 
 function addEditButton() {
