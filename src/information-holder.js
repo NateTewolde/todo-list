@@ -203,6 +203,7 @@ function removeProject(projectName) {
     }
   }
   updateLocalStorage();
+  updateTasksAndProjects();
 }
 
 //returns true if a project name already exists
