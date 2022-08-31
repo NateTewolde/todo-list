@@ -13,6 +13,14 @@ import {
   displayAddTasksBtn,
   formatAddTaskBtn,
 } from "./display-tasks";
+import createHomepage from "./home-page";
+import createThisWeekPage from "./this-week-page";
+import createTodayPage from "./today-page";
+import {
+  checkForTodayPage,
+  checkforProjectPage,
+  checkForWeekPage,
+} from "./add-task-form";
 import "./style.css";
 
 const content = document.querySelector("#content");
@@ -139,6 +147,11 @@ function formatProjectTabs() {
     }
     projectTab.addEventListener("click", () => {
       let projectName = projectTab.getAttribute("data-project");
+      if (
+        document.querySelector("[data-project=" + projectName + "]") == null
+      ) {
+        return;
+      }
       refreshProjectsTitleAttributes();
       appendCurrentProjectToProjectsTitle(projectName);
       clearPage();
@@ -146,7 +159,8 @@ function formatProjectTabs() {
     });
   });
 }
-
+//need to seperate delete and tab button because hittin
+//delete causes tab to form afterwords
 function formatDeleteProjectBtns() {
   const deleteProjBtns = document.querySelectorAll(".delete-project-btn");
   deleteProjBtns.forEach((deleteBtn) => {
@@ -160,6 +174,27 @@ function formatDeleteProjectBtns() {
       projectTab.remove();
       removeProject(projectName);
       removeProjectTasks(projectName);
+
+      if (checkForTodayPage() === true) {
+        clearPage();
+        createTodayPage();
+        return;
+      }
+      if (checkForWeekPage() == true) {
+        clearPage();
+        createThisWeekPage();
+        return;
+      }
+      if (checkforProjectPage() == true) {
+        let projectElement = document.querySelector("[data-current-project]");
+        let currentProj = projectElement.getAttribute("data-current-project");
+        clearPage();
+        displayProjectPage(currentProj);
+        return;
+      }
+
+      clearPage();
+      createHomepage();
     });
   });
 }
