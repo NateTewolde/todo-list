@@ -21,7 +21,7 @@ import {
   checkforProjectPage,
   checkForWeekPage,
 } from "./add-task-form";
-import "./style.css";
+import "./styles/style.css";
 
 const content = document.querySelector("#content");
 const projectsContainer = document.querySelector(".projects-container");
@@ -147,9 +147,7 @@ function formatProjectTabs() {
     }
     projectTab.addEventListener("click", () => {
       let projectName = projectTab.getAttribute("data-project");
-      if (
-        document.querySelector("[data-project=" + projectName + "]") == null
-      ) {
+      if (!checkForProjectName(projectName)) {
         return;
       }
       refreshProjectsTitleAttributes();
@@ -170,7 +168,6 @@ function formatDeleteProjectBtns() {
     deleteBtn.addEventListener("click", () => {
       let projectName = deleteBtn.parentNode.getAttribute("data-project");
       let projectTab = deleteBtn.parentNode;
-
       projectTab.remove();
       removeProject(projectName);
       removeProjectTasks(projectName);
@@ -188,6 +185,11 @@ function formatDeleteProjectBtns() {
       if (checkforProjectPage() == true) {
         let projectElement = document.querySelector("[data-current-project]");
         let currentProj = projectElement.getAttribute("data-current-project");
+        if (projectName === currentProj) {
+          clearPage();
+          createHomepage();
+          return;
+        }
         clearPage();
         displayProjectPage(currentProj);
         return;
