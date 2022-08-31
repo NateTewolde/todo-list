@@ -8,8 +8,7 @@
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 0.8fr 6fr;
+  grid-template-columns: 1fr 4fr;
   font-family: "Roboto", sans-serif;
 }
 
@@ -18,24 +17,24 @@
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  color: black;
-  background-color: #7dd3fc;
-  grid-area: 1/1/2/3;
+  color: rgb(32, 32, 32);
+  border-radius: 5px;
+  padding-right: 3px;
 }
 
 .sidebar {
-  color: black;
+  color: rgb(233, 224, 224);
   font-weight: 500;
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   align-content: center;
   gap: 16px;
-  background-color: #bae6fd;
+  background-color: #047857;
   padding: 8px;
-  border: solid 1px #bae6fd;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border: solid 2px #047857;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .projects {
@@ -43,9 +42,14 @@
   font-size: 2.2rem;
 }
 
+.project-tab {
+  display: flex;
+  justify-content: space-between;
+}
+
 #content {
   width: 100%;
-  background-color: #f0f9ff;
+  background-color: #ecfdf5;
 }
 
 .priority-container {
@@ -58,19 +62,19 @@
 }
 
 .priority1-tasks {
-  background-color: rgb(216, 96, 96);
+  background-color: #ec6767;
 }
 
 .priority2-tasks {
-  background-color: rgb(217, 171, 87);
+  background-color: #ec9a57;
 }
 
 .priority3-tasks {
-  background-color: rgb(226, 226, 81);
+  background-color: #f0d362;
 }
 
 .priority4-tasks {
-  background-color: white;
+  background-color: #ecfdf5;
 }
 
 .task-row {
@@ -78,7 +82,8 @@
   justify-content: space-between;
   padding: 8px 16px;
   padding-right: 24px;
-  border-bottom: 1px solid gray;
+  border-bottom: 2px solid #047857;
+  border-radius: 2px;
 }
 
 .task-items {
