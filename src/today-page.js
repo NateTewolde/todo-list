@@ -10,17 +10,7 @@ function createTodayPage() {
   sideBar.classList.add("today-page");
   sideBar.classList.add("current-tab");
 
-  const todaysDateObj = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-
-  const todaysDate = document.createElement("div");
-  todaysDate.classList.add("todays-date");
-  todaysDate.textContent = todaysDateObj;
-  content.appendChild(todaysDate);
+  addTodayHeader();
 
   const todaysTasks = getTodaysTasks();
   displayTasks(todaysTasks);
@@ -36,6 +26,30 @@ function getTodaysTasks() {
     }
   }
   return todaysTasksArray;
+}
+
+function addTodayHeader() {
+  const todayHeaderSection = document.createElement("div");
+  todayHeaderSection.classList.add("header-section");
+
+  const todayTitle = document.createElement("div");
+  todayTitle.classList.add("header-title");
+  todayTitle.textContent = "Today";
+
+  const todaysDateObj = new Date().toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  const headerDate = document.createElement("div");
+  headerDate.classList.add("header-date");
+  headerDate.textContent = todaysDateObj;
+
+  todayHeaderSection.appendChild(todayTitle);
+  todayHeaderSection.appendChild(headerDate);
+  content.appendChild(todayHeaderSection);
 }
 
 export default createTodayPage;

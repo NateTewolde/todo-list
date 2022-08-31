@@ -10,18 +10,7 @@ function createThisWeekPage() {
   sideBar.classList.add("week-page");
   sideBar.classList.add("current-tab");
 
-  const thisWeeksDateObj = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-
-  const thisWeeksDate = document.createElement("div");
-  thisWeeksDate.classList.add("thisWeeks-date");
-  thisWeeksDate.textContent = thisWeeksDateObj;
-  content.appendChild(thisWeeksDate);
-
+  addThisWeekHeader();
   const thisWeeksTasks = getThisWeeksTasks();
   displayTasks(thisWeeksTasks);
 }
@@ -36,6 +25,30 @@ function getThisWeeksTasks() {
     }
   }
   return thisWeeksTasksArray;
+}
+
+function addThisWeekHeader() {
+  const weekHeaderSection = document.createElement("div");
+  weekHeaderSection.classList.add("header-section");
+
+  const weekTitle = document.createElement("div");
+  weekTitle.classList.add("header-title");
+  weekTitle.textContent = "This Week";
+
+  const weeksDateObj = new Date().toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  const headerDate = document.createElement("div");
+  headerDate.classList.add("header-date");
+  headerDate.textContent = weeksDateObj;
+
+  weekHeaderSection.appendChild(weekTitle);
+  weekHeaderSection.appendChild(headerDate);
+  content.appendChild(weekHeaderSection);
 }
 
 export default createThisWeekPage;
