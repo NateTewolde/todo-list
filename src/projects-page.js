@@ -201,11 +201,36 @@ function formatDeleteProjectBtns() {
 
 function displayProjectPage(projectName) {
   clearPage();
+  addProjectHeader(projectName);
   const projectTasks = getProjectsTasks(projectName);
   displayTasks(projectTasks);
   refreshProjects();
   displayAddTasksBtn();
   formatAddTaskBtn();
+}
+
+function addProjectHeader(projectName) {
+  const projHeaderSection = document.createElement("div");
+  projHeaderSection.classList.add("proj-header-section");
+
+  const projTitle = document.createElement("div");
+  projTitle.classList.add("proj-title");
+  projTitle.textContent = projectName;
+
+  const todaysDateObj = new Date().toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  const headerDate = document.createElement("div");
+  headerDate.classList.add("header-date");
+  headerDate.textContent = todaysDateObj;
+
+  projHeaderSection.appendChild(projTitle);
+  projHeaderSection.appendChild(headerDate);
+  content.appendChild(projHeaderSection);
 }
 
 function getProjectsTasks(projectName) {
