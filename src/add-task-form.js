@@ -257,4 +257,9 @@ function checkforProjectPage() {
   return true;
 }
 
-export default addTaskForm;
+export {
+  addTaskForm,
+  checkForTodayPage,
+  checkForWeekPage,
+  checkforProjectPage,
+};
