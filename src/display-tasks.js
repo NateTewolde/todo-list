@@ -6,7 +6,7 @@ import {
   updateTasksAndProjects,
   updateLocalStorage,
 } from "./information-holder";
-import addTaskForm from "./add-task-form";
+import { addTaskForm } from "./add-task-form";
 import { formatISO } from "date-fns";
 
 //input: array of tasks
