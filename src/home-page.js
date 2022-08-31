@@ -1,5 +1,5 @@
 import { refreshTasks, refreshSidebar, clearPage } from "./display-tasks";
-import "./style.css";
+import "./styles/style.css";
 
 function createHomepage() {
   const sideBar = document.querySelector(".sidebar");
