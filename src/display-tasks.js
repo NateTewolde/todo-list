@@ -141,7 +141,6 @@ function displayTasks(tasks) {
 }
 
 function refreshTasks() {
-  clearPage(content);
   displayTasks();
   displayAddTasksBtn();
   formatAddTaskBtn();
