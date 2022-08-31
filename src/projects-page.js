@@ -3,10 +3,9 @@ import {
   addProject,
   checkForProjectName,
   getProjects,
-  getRandomIntInclusive,
   getSortedByDate,
-  getProjectId,
   removeProject,
+  removeProjectTasks,
 } from "./information-holder";
 import {
   removeAllChildNodes,
@@ -160,6 +159,7 @@ function formatDeleteProjectBtns() {
 
       projectTab.remove();
       removeProject(projectName);
+      removeProjectTasks(projectName);
     });
   });
 }
