@@ -211,10 +211,10 @@ function displayProjectPage(projectName) {
 
 function addProjectHeader(projectName) {
   const projHeaderSection = document.createElement("div");
-  projHeaderSection.classList.add("proj-header-section");
+  projHeaderSection.classList.add("header-section");
 
   const projTitle = document.createElement("div");
-  projTitle.classList.add("proj-title");
+  projTitle.classList.add("header-title");
   projTitle.textContent = projectName;
 
   const todaysDateObj = new Date().toLocaleDateString("en-us", {
