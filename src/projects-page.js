@@ -131,9 +131,10 @@ function displayProjects() {
     projectTab.setAttribute("data-project", projects[i]);
     projectTab.textContent = projects[i];
 
-    let deleteProject = document.createElement("div");
+    let deleteProject = document.createElement("img");
     deleteProject.classList.add("delete-project-btn");
-    deleteProject.textContent = "Delete";
+    deleteProject.src =
+      "/home/nate/repos/todo-list/src/styles/images/trash-can-outline.svg";
     projectTab.appendChild(deleteProject);
     projectsContainer.appendChild(projectTab);
   }
