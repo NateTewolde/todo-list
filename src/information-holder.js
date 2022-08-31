@@ -206,6 +206,22 @@ function removeProject(projectName) {
   updateTasksAndProjects();
 }
 
+function removeProjectTasks(projectName) {
+  let taskTracker = [true];
+  while (taskTracker[taskTracker.length - 1]) {
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].projectId === projectName) {
+        tasks.splice(i, 1);
+        taskTracker.push(true);
+        break;
+      }
+      taskTracker.push(false);
+    }
+  }
+  updateLocalStorage();
+  updateTasksAndProjects();
+}
+
 //returns true if a project name already exists
 function checkForProjectName(projectName) {
   return projects.includes(projectName);
@@ -225,4 +241,5 @@ export {
   formatLocalTasks,
   updateTasksAndProjects,
   updateLocalStorage,
+  removeProjectTasks,
 };
