@@ -10,6 +10,20 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   font-family: "Roboto", sans-serif;
+  color: #202020;
+}
+
+.sidebar {
+  color: rgb(233, 224, 224);
+  font-weight: 500;
+  font-size: 1.5rem;
+  background-color: #047857;
+  padding: 12px;
+  border: solid 2px #047857;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
 }
 
 .header {
@@ -17,24 +31,16 @@
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  color: rgb(32, 32, 32);
+  color: #202020;
   border-radius: 5px;
-  padding-right: 3px;
+  padding-right: 5px;
+  grid-area: 1/1/2/2;
 }
 
-.sidebar {
-  color: rgb(233, 224, 224);
-  font-weight: 500;
-  font-size: 1.5rem;
+.projects-tab {
+  grid-area: 2/1/-1/2;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  gap: 16px;
-  background-color: #047857;
-  padding: 8px;
-  border: solid 2px #047857;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 .projects {
@@ -50,10 +56,31 @@
 #content {
   width: 100%;
   background-color: #ecfdf5;
+  box-sizing: border-box;
+  padding: 32px;
+  padding-top: 0px;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  grid-area: 1/1/2/2;
+}
+
+.header-title {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.header-date {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .priority-container {
-  padding: 24px;
+  padding: 24px 0px;
 }
 
 .priority-title {
