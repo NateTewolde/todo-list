@@ -221,7 +221,6 @@ function addProjectHeader(projectName) {
   projTitle.textContent = projectName;
 
   const todaysDateObj = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",

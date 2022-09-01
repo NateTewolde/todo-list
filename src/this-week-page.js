@@ -36,7 +36,6 @@ function addThisWeekHeader() {
   weekTitle.textContent = "This Week";
 
   const weeksDateObj = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",

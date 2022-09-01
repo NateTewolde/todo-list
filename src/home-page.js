@@ -20,7 +20,6 @@ function addHomeHeader() {
   homeTitle.textContent = "Home";
 
   const homesDateObj = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
