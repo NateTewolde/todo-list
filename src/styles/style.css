@@ -119,12 +119,7 @@ the priority level.
   padding-top: 0px;
 }
 
-.priority-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.priority1-tasks {
+/* .priority1-tasks {
   background-color: #ec6767;
 }
 
@@ -138,15 +133,27 @@ the priority level.
 
 .priority4-tasks {
   background-color: #ecfdf5;
-}
+} */
 
 .task-row {
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
   padding-right: 24px;
-  border-bottom: 2px solid #047857;
   border-radius: 2px;
+}
+
+.priority1-tasks .task-row {
+  border-bottom: 2px solid #ec6767;
+}
+.priority2-tasks .task-row {
+  border-bottom: 2px solid #ec9a57;
+}
+.priority3-tasks .task-row {
+  border-bottom: 2px solid #f0d362;
+}
+.priority4-tasks .task-row {
+  border-bottom: 2px solid #047857;
 }
 
 .task-items {
@@ -166,7 +173,6 @@ the priority level.
   font-weight: 300px;
   font-size: 0.9rem;
   padding: 0px 8px;
-  border-left: 1px solid #047857;
 }
 /*make left hand border for where description starts
 and center description. it can then wrap if its too long
@@ -175,7 +181,6 @@ orrrrr i can set no wrap and then overflow hidden*/
 .task-due-date {
   width: 12ch;
   padding: 0px 8px;
-  border-left: 1px solid #047857;
 }
 
 .revision-items {
@@ -183,5 +188,27 @@ orrrrr i can set no wrap and then overflow hidden*/
   column-gap: 8px;
   align-items: center;
   padding-left: 8px;
+}
+
+.priority1-tasks .task-due-date,
+.priority1-tasks .task-description,
+.priority1-tasks .revision-items {
+  border-left: 1px solid #ec6767;
+}
+.priority2-tasks .task-due-date,
+.priority2-tasks .task-description,
+.priority2-tasks .revision-items {
+  border-left: 1px solid #ec9a57;
+}
+
+.priority3-tasks .task-due-date,
+.priority3-tasks .task-description,
+.priority3-tasks .revision-items {
+  border-left: 1px solid #f0d362;
+}
+
+.priority4-tasks .task-due-date,
+.priority4-tasks .task-description,
+.priority4-tasks .revision-items {
   border-left: 1px solid #047857;
 }
