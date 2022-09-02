@@ -4,6 +4,26 @@
   padding: 0;
 }
 
+/*
+Style: 
+-tasks rows: the set up of each task 
+  and its description and maybe add project name
+-add task button
+-for when hovering over tasks/tabs/buttons
+-for when clicking on tasks/tabs/buttons
+-curent tab
+-when a task is crossed off
+-add task form
+-add project button
+-add icons for each tab
+-put my name and github icon somewhere
+-form validation
+
+-maybe take off priority labels and just 
+adjust the border buttom colors to indicate
+the priority level. 
+*/
+
 #container {
   height: 100vh;
   overflow: hidden;
@@ -20,8 +40,8 @@
   background-color: #047857;
   padding: 32px;
   border: solid 2px #047857;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   display: grid;
   grid-template-rows: 1fr 8fr;
 }
@@ -130,11 +150,38 @@
 }
 
 .task-items {
-  display: flex;
-  column-gap: 8px;
+  display: grid;
+  grid-template-columns: max-content 2fr 4fr max-content;
+  align-items: center;
+  width: 100%;
+}
+
+.task-title {
+  font-weight: 500px;
+  font-size: 1rem;
+  padding: 0px 8px;
+}
+
+.task-description {
+  font-weight: 300px;
+  font-size: 0.9rem;
+  padding: 0px 8px;
+  border-left: 1px solid #047857;
+}
+/*make left hand border for where description starts
+and center description. it can then wrap if its too long
+orrrrr i can set no wrap and then overflow hidden*/
+
+.task-due-date {
+  width: 12ch;
+  padding: 0px 8px;
+  border-left: 1px solid #047857;
 }
 
 .revision-items {
   display: flex;
   column-gap: 8px;
+  align-items: center;
+  padding-left: 8px;
+  border-left: 1px solid #047857;
 }
