@@ -192,9 +192,9 @@ function setCompleted(taskElement) {
 }
 
 function addEditButton() {
-  const editBtn = document.createElement("div");
+  const editBtn = document.createElement("img");
   editBtn.classList.add("edit-button");
-  editBtn.textContent = "Edit";
+  editBtn.src = "../src/styles/images/pencil-outline.svg";
   return editBtn;
 }
 
@@ -229,9 +229,9 @@ function editTask(taskElement) {
 }
 
 function addDeleteButton() {
-  const deleteBtn = document.createElement("div");
+  const deleteBtn = document.createElement("img");
   deleteBtn.classList.add("delete-button");
-  deleteBtn.textContent = "Delete";
+  deleteBtn.src = "../src/styles/images/trash-can-outline-smaller.svg";
   return deleteBtn;
 }
 
