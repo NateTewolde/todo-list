@@ -26,7 +26,6 @@ function displayTasks(tasks) {
   priority1Tasks.setAttribute("class", "priority1-tasks");
   let priority1Title = document.createElement("div");
   priority1Title.classList.add("priority-title");
-  priority1Title.textContent = "Priority 1";
   priority1Tasks.appendChild(priority1Title);
 
   let priority2Tasks = document.createElement("div");
@@ -34,7 +33,6 @@ function displayTasks(tasks) {
 
   let priority2Title = document.createElement("div");
   priority2Title.classList.add("priority-title");
-  priority2Title.textContent = "Priority 2";
   priority2Tasks.appendChild(priority2Title);
 
   let priority3Tasks = document.createElement("div");
@@ -42,7 +40,6 @@ function displayTasks(tasks) {
 
   let priority3Title = document.createElement("div");
   priority3Title.classList.add("priority-title");
-  priority3Title.textContent = "Priority 3";
   priority3Tasks.appendChild(priority3Title);
 
   let priority4Tasks = document.createElement("div");
@@ -50,7 +47,6 @@ function displayTasks(tasks) {
 
   let priority4Title = document.createElement("div");
   priority4Title.classList.add("priority-title");
-  priority4Title.textContent = "Priority 4";
   priority4Tasks.appendChild(priority4Title);
 
   for (let i = 0; i < tasks.length; i++) {
