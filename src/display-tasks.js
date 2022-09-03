@@ -143,9 +143,16 @@ function refreshTasks() {
 }
 
 function displayAddTasksBtn() {
-  const addTasksBtn = document.createElement("button");
+  const plusBtn = document.createElement("img");
+  plusBtn.src = "../src/styles/images/plus-svgrepo-com.svg";
+
+  const addTaskText = document.createElement("div");
+  addTaskText.textContent = "Add Task";
+
+  const addTasksBtn = document.createElement("div");
   addTasksBtn.classList.add("add-task-btn");
-  addTasksBtn.textContent = "Add Task";
+  addTasksBtn.appendChild(plusBtn);
+  addTasksBtn.appendChild(addTaskText);
   content.appendChild(addTasksBtn);
 }
 
