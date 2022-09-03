@@ -6,18 +6,17 @@
 
 /*
 Style: 
--maybe add project name
 -add task button
+-add icons for each tab
 -for when hovering over tasks/tabs/buttons
 -for when clicking on tasks/tabs/buttons
 -curent tab
 -when a task is crossed off
 -add task form
 -add project button
--add icons for each tab
 -put my name and github icon somewhere
 -form validation
-
+-maybe add project name
 */
 
 #container {
@@ -205,4 +204,15 @@ Style:
 }
 
 .add-task-btn {
+  font-size: 1.1rem;
+  font-weight: 450;
+  color: #ecfdf5;
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: 2px solid #047857;
+  background-color: #047857;
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: center;
 }
