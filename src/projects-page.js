@@ -58,31 +58,42 @@ function createProjectForm() {
   createProjectForm.setAttribute("method", "post");
   createProjectForm.setAttribute("id", "new_project_form");
 
+  const projectFormItems = document.createElement("div");
+  projectFormItems.classList.add("project-form-items");
+
+  let listIcon = document.createElement("img");
+  listIcon.src = "../src/styles/images/format-list-checkbox.svg";
+  projectFormItems.appendChild(listIcon);
+
   const nameField = document.createElement("div");
   nameField.classList.add("form-field");
-  const nameLabel = document.createElement("label");
-  nameLabel.setAttribute("for", "name");
-  nameLabel.textContent = "name:\n";
+  nameField.classList.add("project-name-field");
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("name", "project-input-name");
   nameInput.setAttribute("id", "project-input-name");
-  nameInput.setAttribute("placeholder", "Enter Project Name");
-  nameField.appendChild(nameLabel);
+  nameInput.setAttribute("placeholder", "Project");
   nameField.appendChild(nameInput);
-  createProjectForm.appendChild(nameField);
+  projectFormItems.appendChild(nameField);
 
-  const addBtn = document.createElement("button");
+  createProjectForm.appendChild(projectFormItems);
+
+  const addProjectBtns = document.createElement("div");
+  addProjectBtns.classList.add("add-project-btns");
+
+  const addBtn = document.createElement("img");
   addBtn.classList.add("add-project-btn");
   addBtn.setAttribute("type", "button");
-  addBtn.textContent = "Add";
-  createProjectForm.appendChild(addBtn);
+  addBtn.src = "../src/styles/images/add-proj-plus.svg";
+  addProjectBtns.appendChild(addBtn);
 
-  const cancelBtn = document.createElement("button");
+  const cancelBtn = document.createElement("img");
   cancelBtn.classList.add("cancel-project-btn");
   cancelBtn.setAttribute("type", "button");
-  cancelBtn.textContent = "Cancel";
-  createProjectForm.appendChild(cancelBtn);
+  cancelBtn.src = "../src/styles/images/cancel-proj.svg";
+  addProjectBtns.appendChild(cancelBtn);
+
+  createProjectForm.appendChild(addProjectBtns);
 
   projectsContainer.appendChild(createProjectForm);
 }
