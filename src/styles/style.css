@@ -6,7 +6,6 @@
 
 /*
 Style: 
--add icons for each tab
 -for when hovering over tasks/tabs/buttons
 -for when clicking on tasks/tabs/buttons
 -curent tab
@@ -138,7 +137,9 @@ Style:
   justify-content: space-between;
   padding: 8px 16px;
   padding-right: 24px;
+
   border-radius: 2px;
+  border-bottom-right-radius: 10px;
 }
 
 .priority1-tasks .task-row {
@@ -221,4 +222,24 @@ Style:
   column-gap: 8px;
   align-items: center;
   justify-content: center;
+}
+
+.add-task-btn:hover {
+  transition: all 0.4s;
+  transform-origin: 50% 50%;
+  transform: scale(1.05);
+}
+.task-row:hover {
+  background-color: #d1fae5;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.tab:hover,
+.add-projects-button:hover,
+.delete-project-btn:hover,
+.delete-button:hover,
+.edit-button:hover {
+  transition: all 0.4s;
+  transform-origin: 50% 50%;
+  transform: scale(1.2);
 }
