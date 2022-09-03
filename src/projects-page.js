@@ -126,14 +126,29 @@ function displayProjects() {
     if (projects[i] == null) {
       return;
     }
+
     let projectTab = document.createElement("div");
     projectTab.classList.add("project-tab");
     projectTab.setAttribute("data-project", projects[i]);
-    projectTab.textContent = projects[i];
+
+    let projectTabItems = document.createElement("div");
+    projectTabItems.classList.add("project-tab-items");
+    projectTabItems.classList.add("tab");
+
+    let listIcon = document.createElement("img");
+    listIcon.src = "../src/styles/images/format-list-checkbox.svg";
+
+    let projectTabTitle = document.createElement("div");
+    projectTabTitle.textContent = projects[i];
 
     let deleteProject = document.createElement("img");
     deleteProject.classList.add("delete-project-btn");
     deleteProject.src = "../src/styles/images/trash-can-outline.svg";
+
+    projectTabItems.appendChild(listIcon);
+    projectTabItems.appendChild(projectTabTitle);
+
+    projectTab.appendChild(projectTabItems);
     projectTab.appendChild(deleteProject);
     projectsContainer.appendChild(projectTab);
   }
