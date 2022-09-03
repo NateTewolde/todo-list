@@ -2,6 +2,7 @@ function checkForLocalStorage() {
   if (storageAvailable("localStorage")) {
     return true;
   } else {
+    console.log("No local storage available");
     return false;
   }
 }
