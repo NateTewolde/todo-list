@@ -6,18 +6,14 @@
 
 /*
 Style: 
--add project form
--line up home and to-do again. idk what happened
-  maybe when i got the add task 
-  to the bottom of content?
 -put my name and github icon somewhere
 -make scrollable if too much on the scren
--maybe add project name
+-favicon
 */
 
 #container {
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   grid-template-columns: 1fr 4fr;
   font-family: "Roboto", sans-serif;
@@ -34,7 +30,7 @@ Style:
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   display: grid;
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: 4rem 8fr 100%;
 }
 
 .header {
@@ -44,6 +40,7 @@ Style:
   min-width: max-content;
   color: #ecfdf5;
   padding-right: 5px;
+  padding-top: 0px;
   grid-area: 1/1/2/2;
 }
 
@@ -101,7 +98,10 @@ Style:
   box-sizing: border-box;
   padding: 32px 64px;
   display: grid;
-  grid-template-rows: 1fr min-content min-content 100%;
+  grid-template-rows: 4rem min-content min-content 100%;
+}
+.tab-section {
+  margin-top: 24px;
 }
 
 .header-section {
@@ -120,6 +120,10 @@ Style:
   font-size: 1.5rem;
   font-weight: 500;
   padding-top: 8px;
+}
+
+#tasks-container {
+  margin-top: 20px;
 }
 
 .priority-container {
@@ -307,7 +311,7 @@ input:focus {
 #project-input-name {
   color: #047857;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   background-color: #ecfdf5;
   border: 1px solid #ecfdf5;
   border-radius: 2px;
@@ -366,6 +370,22 @@ input[type="checkbox"] {
   background-color: #047857;
 }
 
+.footer-section {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+.github-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .task-row:hover {
   background-color: #d1fae5;
   border-top-left-radius: 8px;
@@ -384,7 +404,9 @@ input[type="checkbox"] {
 .delete-button:hover,
 .edit-button:hover,
 .submit-form-btn:hover,
-.cancel-form-btn:hover {
+.cancel-form-btn:hover,
+.add-project-btn:hover,
+.cancel-project-btn:hover {
   transition: all 0.4s;
   transform-origin: 50% 50%;
   transform: scale(1.2);
