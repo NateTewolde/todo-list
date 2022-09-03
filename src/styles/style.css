@@ -6,7 +6,6 @@
 
 /*
 Style: 
--curent tab
 -when a task is crossed off
 -add task form
 -add project button
@@ -222,6 +221,19 @@ Style:
   justify-content: center;
 }
 
+input[type="checkbox"]:checked ~ div {
+  text-decoration: line-through;
+  text-decoration-color: #047857;
+}
+
+input[type="checkbox"] {
+  accent-color: #047857;
+}
+
+input[type="checkbox"] {
+  background-color: #047857;
+}
+
 .task-row:hover {
   background-color: #d1fae5;
   border-top-left-radius: 8px;
@@ -249,6 +261,8 @@ Style:
 .delete-project-btn:active,
 .delete-button:active,
 .edit-button:active,
-.add-task-btn:active {
+.add-task-btn:active,
+input[type="checkbox"]:checked ~ div,
+input[type="checkbox"]:checked {
   opacity: 0.5;
 }
