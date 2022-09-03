@@ -6,10 +6,9 @@
 
 /*
 Style: 
--when a task is crossed off
 -add task form
--add project button
 -put my name and github icon somewhere
+-make scrollable if too much on the scren
 -form validation
 -maybe add project name
 */
@@ -134,9 +133,7 @@ Style:
   justify-content: space-between;
   padding: 8px 16px;
   padding-right: 24px;
-
   border-radius: 2px;
-  border-bottom-right-radius: 10px;
 }
 
 .priority1-tasks .task-row {
@@ -203,7 +200,10 @@ Style:
 
 .priority4-tasks .task-due-date,
 .priority4-tasks .task-description,
-.priority4-tasks .revision-items {
+.priority4-tasks .revision-items,
+.due-date-field,
+.form-btns,
+.description-field {
   border-left: 1px solid #047857;
 }
 
@@ -221,12 +221,114 @@ Style:
   justify-content: center;
 }
 
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.form-fields {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  padding-right: 24px;
+
+  border-radius: 2px;
+  border-bottom: 2px solid #047857;
+}
+
+.form-items {
+  display: grid;
+  grid-template-columns: max-content 2fr 4fr max-content;
+  align-items: center;
+  width: 100%;
+}
+.priority-field {
+  max-width: 2ch;
+  margin-left: -5px;
+}
+
+.title-field {
+  font-weight: 500px;
+  font-size: 1.1rem;
+  padding: 0px 8px;
+}
+
+.description-field {
+  font-weight: 300px;
+  font-size: 1rem;
+  padding: 0px 8px;
+}
+
+.due-date-field {
+  width: 12ch;
+  padding: 0px 8px;
+  text-align: center;
+}
+
+#title {
+  font-weight: 500px;
+  font-size: 1.1rem;
+  width: 100%;
+  background-color: #ecfdf5;
+  border: 1px solid #ecfdf5;
+}
+#description {
+  font-weight: 300px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #ecfdf5;
+  border: 1px solid #ecfdf5;
+}
+
+#due-date {
+  width: 13ch;
+  box-sizing: border-box;
+  background-color: #ecfdf5;
+  border: 1px solid #ecfdf5;
+}
+
+#priority {
+  width: 100%;
+}
+
+.priority1-option {
+  background-color: #ecfdf5;
+  color: #ef4444;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.priority2-option {
+  background-color: #ecfdf5;
+  color: #f97316;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.priority3-option {
+  background-color: #ecfdf5;
+  color: #fbbf24;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.priority4-option {
+  background-color: #ecfdf5;
+}
+
+.form-btns {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  padding-left: 8px;
+}
+
 input[type="checkbox"]:checked ~ div {
   text-decoration: line-through;
   text-decoration-color: #047857;
 }
 
-input[type="checkbox"] {
+input[type="option"] {
   accent-color: #047857;
 }
 
@@ -250,7 +352,9 @@ input[type="checkbox"] {
 .add-projects-button:hover,
 .delete-project-btn:hover,
 .delete-button:hover,
-.edit-button:hover {
+.edit-button:hover,
+.submit-form-btn:hover,
+.cancel-form-btn:hover {
   transition: all 0.4s;
   transform-origin: 50% 50%;
   transform: scale(1.2);
