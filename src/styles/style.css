@@ -99,7 +99,7 @@ Style:
   box-sizing: border-box;
   padding: 32px 64px;
   display: grid;
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: 1fr min-content min-content 100%;
 }
 
 .header-section {
@@ -202,4 +202,7 @@ Style:
 .priority4-tasks .task-description,
 .priority4-tasks .revision-items {
   border-left: 1px solid #047857;
+}
+
+.add-task-btn {
 }
