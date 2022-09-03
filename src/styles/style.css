@@ -6,8 +6,6 @@
 
 /*
 Style: 
--for when hovering over tasks/tabs/buttons
--for when clicking on tasks/tabs/buttons
 -curent tab
 -when a task is crossed off
 -add task form
@@ -224,16 +222,18 @@ Style:
   justify-content: center;
 }
 
-.add-task-btn:hover {
-  transition: all 0.4s;
-  transform-origin: 50% 50%;
-  transform: scale(1.05);
-}
 .task-row:hover {
   background-color: #d1fae5;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+
+.add-task-btn:hover {
+  transition: all 0.2s;
+  transform-origin: 50% 50%;
+  transform: scale(1.05);
+}
+
 .tab:hover,
 .add-projects-button:hover,
 .delete-project-btn:hover,
@@ -242,4 +242,13 @@ Style:
   transition: all 0.4s;
   transform-origin: 50% 50%;
   transform: scale(1.2);
+}
+
+.tab:active,
+.add-projects-button:active,
+.delete-project-btn:active,
+.delete-button:active,
+.edit-button:active,
+.add-task-btn:active {
+  opacity: 0.5;
 }
