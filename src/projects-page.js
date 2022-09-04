@@ -22,6 +22,7 @@ import {
   checkForWeekPage,
 } from "./add-task-form";
 import "./styles/style.css";
+import addProjPlusIcon from "./styles/images/add-proj-plus.svg";
 
 const content = document.querySelector("#content");
 const projectsContainer = document.querySelector(".projects-container");
@@ -84,7 +85,7 @@ function createProjectForm() {
   const addBtn = document.createElement("img");
   addBtn.classList.add("add-project-btn");
   addBtn.setAttribute("type", "button");
-  addBtn.src = "../src/styles/images/add-proj-plus.svg";
+  addBtn.src = addProjPlusIcon;
   addProjectBtns.appendChild(addBtn);
 
   const cancelBtn = document.createElement("img");
