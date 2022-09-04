@@ -241,7 +241,6 @@ function getTaskInput(projectName) {
   if (priorityChoice === "!") {
     priorityInput += "3";
   }
-  console.log(priorityInput);
   setTask(titleInput, descriptionInput, dateInput, priorityInput, projectName);
 }
 
