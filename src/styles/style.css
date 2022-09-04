@@ -6,8 +6,6 @@
 
 /*
 Style: 
--put my name and github icon somewhere
--make scrollable if too much on the scren
 -favicon
 */
 
@@ -99,6 +97,7 @@ Style:
   padding: 32px 64px;
   display: grid;
   grid-template-rows: 4rem min-content min-content 100%;
+  position: relative;
 }
 .tab-section {
   margin-top: 24px;
@@ -384,6 +383,9 @@ input[type="checkbox"] {
   column-gap: 8px;
   font-size: 1.2rem;
   font-weight: 500;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .task-row:hover {
