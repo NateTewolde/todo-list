@@ -7,6 +7,15 @@ function checkForLocalStorage() {
   }
 }
 
+//returns true if local storage is empty
+function checkIfLocalStorageIsEmpty() {
+  if (localStorage.length > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function addToLocalStorage(keyName, keyValue) {
   if (!checkForLocalStorage()) {
     return;
@@ -54,4 +63,5 @@ export {
   addToLocalStorage,
   clearLocalStorage,
   getFromLocalStorage,
+  checkIfLocalStorageIsEmpty,
 };
