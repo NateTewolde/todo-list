@@ -1,6 +1,7 @@
 import { getSortedByDate } from "./information-holder";
 import { isThisWeek, getWeek, lastDayOfWeek } from "date-fns";
 import { displayTasks, refreshSidebar } from "./display-tasks";
+import "./styles/style.css";
 
 function createThisWeekPage() {
   const content = document.querySelector("#content");

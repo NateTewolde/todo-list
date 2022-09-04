@@ -12,6 +12,10 @@ import {
   displayProjectPage,
   refreshProjectsTitleAttributes,
 } from "./projects-page";
+import "./styles/style.css";
+import editingPencilIcon from "../src/styles/images/pencil-plus-outline.svg";
+import plusIcon from "../src/styles/images/plus.svg";
+import cancelBtnIcon from "../src/styles/images/window-close.svg";
 
 function addTaskForm() {
   createTaskForm();
@@ -127,9 +131,9 @@ function createTaskForm() {
   submitBtn.setAttribute("type", "button");
 
   if (checkForEditing() == true) {
-    submitBtn.src = "../src/styles/images/pencil-plus-outline.svg";
+    submitBtn.src = editingPencilIcon;
   } else {
-    submitBtn.src = "../src/styles/images/plus.svg";
+    submitBtn.src = plusIcon;
   }
 
   formBtns.appendChild(submitBtn);
@@ -137,7 +141,7 @@ function createTaskForm() {
   const cancelBtn = document.createElement("img");
   cancelBtn.classList.add("cancel-form-btn");
   cancelBtn.setAttribute("type", "button");
-  cancelBtn.src = "../src/styles/images/window-close.svg";
+  cancelBtn.src = cancelBtnIcon;
   formBtns.appendChild(cancelBtn);
 
   createTaskForm.appendChild(formBtns);

@@ -9,15 +9,7 @@ import {
   refreshProjects,
 } from "./projects-page";
 import "./styles/style.css";
-
-//add project name to task row -meh. if its easy.
-
-//style and make look nice and add visual button presses.
-//and visual hovers over tasks
-//the week's page also shows the range for the week like Aug 28 - Sep 3
-//add default tasks and projects to the page.
-//if local storage hasnt been accessed before then make it
-//to avoid it being made everytime and fillign local storage
+import githubSvgIcon from "../src/styles/images/github-svgrepo-com.svg";
 
 createHomepage();
 formatTabs();
@@ -63,7 +55,7 @@ function addGithub() {
   githubLink.setAttribute("href", "https://github.com/NateTewolde");
 
   const githubIcon = document.createElement("img");
-  githubIcon.src = "../src/styles/images/github-svgrepo-com.svg";
+  githubIcon.src = githubSvgIcon;
 
   githubLink.appendChild(githubIcon);
   githubSection.appendChild(githubLink);

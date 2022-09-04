@@ -6,8 +6,12 @@ import {
   updateTasksAndProjects,
   updateLocalStorage,
 } from "./information-holder";
+import "./styles/style.css";
 import { addTaskForm } from "./add-task-form";
 import { formatISO } from "date-fns";
+import addTaskBtnPlusIcon from "../src/styles/images/plus-svgrepo-com.svg";
+import smallerTashCanOutlineIcon from "../src/styles/images/trash-can-outline-smaller.svg";
+import editBtnPencilOutlineIcon from "../src/styles/images/pencil-outline.svg";
 
 //input: array of tasks
 //displays tasks seperated by priority level from 1-4
@@ -144,7 +148,7 @@ function refreshTasks() {
 
 function displayAddTasksBtn() {
   const plusBtn = document.createElement("img");
-  plusBtn.src = "../src/styles/images/plus-svgrepo-com.svg";
+  plusBtn.src = addTaskBtnPlusIcon;
 
   const addTaskText = document.createElement("div");
   addTaskText.textContent = "Add Task";
@@ -201,7 +205,7 @@ function setCompleted(taskElement) {
 function addEditButton() {
   const editBtn = document.createElement("img");
   editBtn.classList.add("edit-button");
-  editBtn.src = "../src/styles/images/pencil-outline.svg";
+  editBtn.src = editBtnPencilOutlineIcon;
   return editBtn;
 }
 
@@ -238,7 +242,7 @@ function editTask(taskElement) {
 function addDeleteButton() {
   const deleteBtn = document.createElement("img");
   deleteBtn.classList.add("delete-button");
-  deleteBtn.src = "../src/styles/images/trash-can-outline-smaller.svg";
+  deleteBtn.src = smallerTashCanOutlineIcon;
   return deleteBtn;
 }
 

@@ -1,6 +1,7 @@
 import { getSortedByDate } from "./information-holder";
 import { isToday } from "date-fns";
 import { displayTasks, refreshSidebar } from "./display-tasks";
+import "./styles/style.css";
 
 function createTodayPage() {
   const content = document.querySelector("#content");

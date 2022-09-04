@@ -23,6 +23,9 @@ import {
 } from "./add-task-form";
 import "./styles/style.css";
 import addProjPlusIcon from "./styles/images/add-proj-plus.svg";
+import listSvgIcon from "../src/styles/images/format-list-checkbox.svg";
+import trashCanIcon from "../src/styles/images/trash-can-outline.svg";
+import cancelProjIcon from "../src/styles/images/cancel-proj.svg";
 
 const content = document.querySelector("#content");
 const projectsContainer = document.querySelector(".projects-container");
@@ -63,7 +66,7 @@ function createProjectForm() {
   projectFormItems.classList.add("project-form-items");
 
   let listIcon = document.createElement("img");
-  listIcon.src = "../src/styles/images/format-list-checkbox.svg";
+  listIcon.src = listSvgIcon;
   projectFormItems.appendChild(listIcon);
 
   const nameField = document.createElement("div");
@@ -91,7 +94,7 @@ function createProjectForm() {
   const cancelBtn = document.createElement("img");
   cancelBtn.classList.add("cancel-project-btn");
   cancelBtn.setAttribute("type", "button");
-  cancelBtn.src = "../src/styles/images/cancel-proj.svg";
+  cancelBtn.src = cancelProjIcon;
   addProjectBtns.appendChild(cancelBtn);
 
   createProjectForm.appendChild(addProjectBtns);
@@ -148,14 +151,14 @@ function displayProjects() {
     projectTabItems.classList.add("tab");
 
     let listIcon = document.createElement("img");
-    listIcon.src = "../src/styles/images/format-list-checkbox.svg";
+    listIcon.src = listSvgIcon;
 
     let projectTabTitle = document.createElement("div");
     projectTabTitle.textContent = projects[i];
 
     let deleteProject = document.createElement("img");
     deleteProject.classList.add("delete-project-btn");
-    deleteProject.src = "../src/styles/images/trash-can-outline.svg";
+    deleteProject.src = trashCanIcon;
 
     projectTabItems.appendChild(listIcon);
     projectTabItems.appendChild(projectTabTitle);
