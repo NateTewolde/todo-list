@@ -209,6 +209,9 @@ function removeProject(projectName) {
 function removeProjectTasks(projectName) {
   let taskTracker = [true];
   while (taskTracker[taskTracker.length - 1]) {
+    if (tasks.length === 0) {
+      taskTracker.push(false);
+    }
     for (let i = 0; i < tasks.length; i++) {
       if (tasks[i].projectId === projectName) {
         tasks.splice(i, 1);
