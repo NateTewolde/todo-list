@@ -27,23 +27,19 @@ function setDefaults() {
       "Milk",
       "Get some on the way home from work",
       "2022-09-12",
-      "",
-      undefined
+      "3",
+      undefined,
+      "yes"
     );
     setTask("Laundry", "use the tide", "2022-09-08", "3", undefined);
-    setTask(
-      "Take out the trash",
-      "put it on the curb its garbage day",
-      "2022-09-10",
-      "1",
-      "Chores"
-    );
+
     setTask(
       "Wash dishes",
       "Use hot water this time",
       "2022-09-04",
       "2",
-      "Chores"
+      "Chores",
+      "yes"
     );
     setTask("Sweep the floor", "You already know", "2022-09-04", "", "Chores");
     addProject("Chores");
