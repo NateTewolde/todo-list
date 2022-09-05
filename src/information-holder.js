@@ -109,6 +109,7 @@ function setTask(title, description, dueDate, priority, projectId) {
     )
   );
   updateLocalStorage();
+  updateTasksAndProjects();
 }
 
 function updateLocalStorage() {
@@ -164,9 +165,12 @@ function deleteTask(theTasksId) {
   let taskIndex = findTaskIndex(theTasksId);
   tasks.splice(taskIndex, 1);
   updateLocalStorage();
+  updateTasksAndProjects();
 }
 
 function findTaskIndex(theTasksId) {
+  updateLocalStorage();
+  updateTasksAndProjects();
   let taskIndex = tasks.findIndex((index) =>
     checkForMatchingIds(index, theTasksId)
   );
@@ -189,6 +193,7 @@ function getRandomIntInclusive() {
 function addProject(projectName) {
   projects.push(projectName);
   updateLocalStorage();
+  updateTasksAndProjects();
 }
 
 function getProjects() {
