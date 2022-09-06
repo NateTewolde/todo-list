@@ -12,36 +12,48 @@ import "./styles/style.css";
 import githubSvgIcon from "../src/styles/images/github-svgrepo-com.svg";
 import { checkIfLocalStorageIsEmpty } from "./local-storage-manager";
 import { addProject, setTask } from "./information-holder";
+import add from "date-fns/add";
 
 setDefaults();
 function setDefaults() {
   if (checkIfLocalStorageIsEmpty() === true) {
+    let todaysDateObj = new Date();
+    let todaysDate = todaysDateObj.toLocaleDateString("en-us");
+
+    let addTwoDaysDate = add(todaysDateObj, {
+      days: 2,
+    }).toLocaleDateString("en-us");
+
+    let add1WeekDate = add(todaysDateObj, {
+      days: 7,
+    }).toLocaleDateString("en-us");
+
     setTask(
       "Send email",
       "tell the boss its been done.",
-      "2022-09-04",
+      todaysDate,
       "1",
       undefined
     );
     setTask(
       "Milk",
       "Get some on the way home from work",
-      "2022-09-12",
+      todaysDate,
       "3",
       undefined,
       "yes"
     );
-    setTask("Laundry", "use the tide", "2022-09-08", "3", undefined);
+    setTask("Laundry", "use the tide", add1WeekDate, "3", undefined);
 
     setTask(
       "Wash dishes",
       "Use hot water this time",
-      "2022-09-04",
+      todaysDate,
       "2",
       "Chores",
       "yes"
     );
-    setTask("Sweep the floor", "You already know", "2022-09-04", "", "Chores");
+    setTask("Sweep floor", "maybe mop too after", addTwoDaysDate, "", "Chores");
     addProject("Chores");
   }
 }
